@@ -6,6 +6,8 @@ public class Foto {
 	private String titolo;
 	private Album album;
 	private LocalDateTime dataCreazione;
+	/*Prova url*/
+	private String url;
 	
 	
 public Foto () {
@@ -43,6 +45,17 @@ public void setDataCreazione(LocalDateTime dataCreazione) {
 	this.dataCreazione = dataCreazione;
 }
 
+
+
+/********************PROVA************************/
+public String getUrl() {
+	return url;
+}
+
+
+public void setUrl(String url) {
+	this.url = url;
+}
 
 
 }
