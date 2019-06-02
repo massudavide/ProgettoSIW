@@ -4,6 +4,10 @@ public class Admin {
 	String username;
 	String psw;
 	
+public Admin (String nome, String psw) {
+	this.username=nome;
+	this.psw=psw;
+}
 	
 	// Getters & Setters
 	public String getUsername() {
