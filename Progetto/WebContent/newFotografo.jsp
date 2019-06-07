@@ -8,20 +8,19 @@
 </head>
 
 <body>
-  <div class="full-screen-containerAdmin">
+  <div class="full-screen-containerFotografo">
     <div class="login-container">
-      <h3 class="login-title">Welcome</h3>
-      <form action="adminController" method="post">
+      <h3 class="login-title">Inserimento nuovo fotografo</h3>
+      <form action="fotoController" method="post">
         <div class="input-group">
-          <label>Username</label>
+          <label>Nome</label>
           <input type="text" name="username">
         </div>
         <div class="input-group">
-          <label>Password</label>
-          <input type="password" name="password">
+          <label>Cognome</label>
+          <input type="text" name="cognome">
         </div>
-        <div>${errorLogin}</div>
-        <button type="submit" class="login-button">Sign In</button>
+        <button type="submit" class="login-button">Conferma</button>
       </form>
     </div>
   </div>

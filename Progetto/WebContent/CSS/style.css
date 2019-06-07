@@ -24,7 +24,40 @@ html, body {
     margin: 0;
 }
 
-.full-screen-container {
+.full-screen-containerAdmin {
+    background-image: url("https://images.wallpaperscraft.com/image/photographer_sea_sunset_123418_1920x1080.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-screen-containerFotografo {
+    background-image: url("http://www.photoexperiencepisa.it/wp-content/uploads/2017/08/photographer-silhouette-photography-hd-wallpaper-1920x1080-10212.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-screen-containerAlbum {
+    background-image: url("https://images.wallpaperscraft.com/image/photographer_sea_sunset_123418_1920x1080.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-screen-containerFoto{
     background-image: url("https://images.wallpaperscraft.com/image/photographer_sea_sunset_123418_1920x1080.jpg");
     height: 100vh;
     width: 100vw;
