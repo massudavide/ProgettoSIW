@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h2>Fotografi:</h2>
+		<ul>
+			<li th:each="fotografo : ${fotografi}"> 
+				<a
+				th:href="@{'/fotografo' + '/' + ${fotografo.id}}"
+				th:text="${fotografo.nome}+' '+${fotografo.cognome}">marco verdi</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package it.uniroma3.siw.progettoSIW.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
@@ -45,7 +47,7 @@ public class FotografoController{
 			model.addAttribute("fotografo", this.fotografoService.fotografoPerId(id));
 			return "fotografo.html";
 		}else {
-			model.addAttribute("fotografo", this.fotografoService.tutti());
+			model.addAttribute("fotografi", this.fotografoService.tutti());
 			return "fotografi.html";
 		}
 	}
@@ -54,6 +56,13 @@ public class FotografoController{
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
 		return "fotografoForm.html";
+	}
+	
+	@RequestMapping("/lista")
+	public String lista(Model model) {
+		List<Fotografo> fotografi=fotografoService.tutti();
+		model.addAttribute("fotografi", fotografi);
+		return "fotografi.html";
 	}
 
 }
