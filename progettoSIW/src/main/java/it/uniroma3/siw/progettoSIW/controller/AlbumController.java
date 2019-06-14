@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import it.uniroma3.siw.progettoSIW.model.*;
 import it.uniroma3.siw.progettoSIW.services.*;
 
@@ -23,15 +24,24 @@ public class AlbumController {
 	@Autowired
 	private AlbumValidator albumValidator;
 	
+	@Autowired
+	private FotografoService fotografoService;
+
+	
 	@RequestMapping(value = "/album", method = RequestMethod.POST)
-	public String newAlbum(@Valid @ModelAttribute("album") Album album,
+	public String newAlbum(@Valid @ModelAttribute("albumForm") AlbumForm albumForm, //Da controllare
 			Model model, BindingResult bindingResult) {
 		
-		this.albumValidator.validate(album, bindingResult);
+		this.albumValidator.validate(albumForm, bindingResult);
 		if(!bindingResult.hasErrors()) {
+			Album album=new Album();
+			album.setTitolo(albumForm.getTitolo());
+			album.setFotografo(fotografoService.fotografoPerId(Long.parseLong(albumForm.getFotografoId())));
+			
+			
 			this.albumService.inserisci(album);
 			model.addAttribute("album", this.albumService.tutti());
-			return "album.html";
+			return "album.html"; 
 		}else {
 			return "albumForm.html";
 		}
@@ -49,8 +59,8 @@ public class AlbumController {
 	}
 	
 	@RequestMapping("/addAlbum")
-	public String addFoto(Model model) {
-		model.addAttribute("album", new Album());
+	public String addAlbum(Model model) {
+		model.addAttribute("albumForm", new AlbumForm());
 		return "albumForm.html";
 	}
 
