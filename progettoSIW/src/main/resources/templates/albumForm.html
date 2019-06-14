@@ -3,34 +3,38 @@
 	xmlns="http://www.w3.org/1999/html">
 
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:100,300,500">
-  <link rel="stylesheet" href="/CSS/style.css">
-  <title>Transparent Login Form</title>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Quicksand:100,300,500">
+<link rel="stylesheet" href="/CSS/style.css">
+<title>Transparent Login Form</title>
 </head>
 
 <body>
-  <div class="full-screen-containerFotografo">
-    <div class="login-container">
-      <h3 class="login-title">Inserimento nuovo fotografo</h3>
-      <form th:action="@{/album}" method="POST" th:object="${album}">
-        <div class="input-group">
-          <label>Titolo</label>
-        <input type="text" th:field="*{titolo}" />
-				<span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}">error</span>
-        </div>
-        <div class="input-group">
-          <label>Fotografo</label>
-			<select th:field="*{fotografo}">
-<option value="">Seleziona Fotografo</option>
-<option th:each="fotografo : ${fotografi}" th:value="${fotografo.id}" th:text="${fotografo.nome}"></option>
-</select>
-			</td></tr>			
-			<tr>     
-        </div>
-        <button type="submit" class="login-button">Conferma</button>
-      </form>
-    </div>
-  </div>
+	<div class="full-screen-containerAlbum">
+		<div class="login-container">
+			<h3 class="login-title">Inserimento nuovo Album</h3>
+			
+			<form th:action="@{/album}" method="POST" th:object="${album}">
+				
+				<div class="input-group">
+					<label>Titolo</label> <input type="text" th:field="*{titolo}" /> <span
+						th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}">error</span>
+				</div>
+
+				<!--         <div class="input-group"> -->
+				<!--           <label>Fotografo</label> -->
+				<!-- 			<select th:field="*{fotografo}"> -->
+				<!-- <option value="">Seleziona Fotografo</option> -->
+				<!-- <option th:each="fotografo : ${fotografi}" th:value="${fotografo.id}" th:text="${fotografo.nome}"></option> -->
+				<!-- </select>   -->
+				<!-- 		</div> -->
+				
+				
+				<button type="submit" class="login-button">Conferma</button>
+				
+		</form>
+	</div>
+	</div>
 </body>
 
 </html>
