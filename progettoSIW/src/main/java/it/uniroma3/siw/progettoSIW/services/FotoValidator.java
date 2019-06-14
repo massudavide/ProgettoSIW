@@ -19,7 +19,7 @@ public class FotoValidator implements Validator {
 	public void validate(Object o, Errors error) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(error, "nome", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(error, "fotografo", "required");
-		
+
 
 	}
 }
