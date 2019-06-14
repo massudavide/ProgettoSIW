@@ -12,6 +12,7 @@ public class Richiesta {
 	private Long id;
 	
 	@Column(nullable=false)
+	@ManyToMany
 	private List<Foto> listaFoto;
 
 	public List<Foto> getListaFoto() {
