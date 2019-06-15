@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>Carrello</h4>
+		<ul>
+			<li th:each="fotografia : ${fotografie}"> 
+				<!-- Viene stampato un link -->
+				<!-- Il link lo costruiamo noi, con il nome dello studente, 
+					abbiamo indicato che sia il controller a gestire la richiesta,
+					con una get-->
+				<!-- Al posto di paolo (valore fittizio), 
+					compare ciò che ho specificato in th:text -->
+				<a
+				th:href="${fotografia.url}"
+				th:text="${fotografia.titolo}"> Il titolo della foto</a>
+				<a
+				th:href="@{'/deleteFotoRichiesta' + '/' + ${fotografia.id}}"> Rimuovi</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

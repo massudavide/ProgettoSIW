@@ -44,8 +44,8 @@ public class FotoController{
 			foto.setAlbum(albumService.albumPerId(Long.parseLong(fotoForm.getAlbumId())));
 			
 			this.fotoService.inserisci(foto);
-			model.addAttribute("foto", this.fotoService.tutti());
-			return "album.html";
+			model.addAttribute("fotografie", this.fotoService.tutti());
+			return "fotografie.html";
 		}else {
 			model.addAttribute("albums", this.albumService.tutti());
 			return "fotoForm.html";

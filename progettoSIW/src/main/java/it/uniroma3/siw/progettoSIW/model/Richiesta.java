@@ -11,9 +11,12 @@ public class Richiesta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable=false)
 	@ManyToMany
 	private List<Foto> listaFoto;
+	
+	private String email;
+	
+	
 
 	public List<Foto> getListaFoto() {
 		return listaFoto;
@@ -25,6 +28,14 @@ public class Richiesta {
 
 	public Long getId() {
 		return id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	
