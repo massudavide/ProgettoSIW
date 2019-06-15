@@ -14,20 +14,22 @@
 		<div class="login-container">
 			<h3 class="login-title">Inserimento nuovo Album</h3>
 			
-			<form th:action="@{/album}" method="POST" th:object="${album}">
+			<form th:action="@{/album}" method="POST" th:object="${albumForm}">
 				
 				<div class="input-group">
 					<label>Titolo</label> <input type="text" th:field="*{titolo}" /> <span
 						th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}">error</span>
 				</div>
 
-				<!--         <div class="input-group"> -->
-				<!--           <label>Fotografo</label> -->
-				<!-- 			<select th:field="*{fotografo}"> -->
-				<!-- <option value="">Seleziona Fotografo</option> -->
-				<!-- <option th:each="fotografo : ${fotografi}" th:value="${fotografo.id}" th:text="${fotografo.nome}"></option> -->
-				<!-- </select>   -->
-				<!-- 		</div> -->
+				        <div class="input-group">
+				          <label>Fotografo</label>
+							<select th:field="*{fotografoId}">
+				<option value="">Seleziona Fotografo</option>
+				<option th:each="fotografo : ${fotografi}" th:value="${fotografo.id}" th:text="${fotografo.nome}"></option>
+				</select> 
+				<span
+						th:if="${#fields.hasErrors('fotografoId')}" th:errors="*{fotografoId}">error</span> 
+						</div>
 				
 				
 				<button type="submit" class="login-button">Conferma</button>

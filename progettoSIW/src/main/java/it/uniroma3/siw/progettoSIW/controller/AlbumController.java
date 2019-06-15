@@ -37,12 +37,11 @@ public class AlbumController {
 			Album album=new Album();
 			album.setTitolo(albumForm.getTitolo());
 			album.setFotografo(fotografoService.fotografoPerId(Long.parseLong(albumForm.getFotografoId())));
-			
-			
 			this.albumService.inserisci(album);
 			model.addAttribute("album", this.albumService.tutti());
 			return "album.html"; 
 		}else {
+			model.addAttribute("fotografi", this.fotografoService.tutti());
 			return "albumForm.html";
 		}
 	}
@@ -61,6 +60,7 @@ public class AlbumController {
 	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		model.addAttribute("albumForm", new AlbumForm());
+		model.addAttribute("fotografi", this.fotografoService.tutti());
 		return "albumForm.html";
 	}
 
