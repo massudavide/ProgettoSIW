@@ -40,6 +40,13 @@ public class Album {
 	public void setFotografo(Fotografo fotografo) {
 		this.fotografo = fotografo;
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	
 	
 	

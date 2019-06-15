@@ -1,5 +1,7 @@
 package it.uniroma3.siw.progettoSIW.controller;
 
+import java.time.LocalDateTime;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.progettoSIW.services.AlbumService;
+import it.uniroma3.siw.progettoSIW.services.FotoForm;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.model.Foto;
 import it.uniroma3.siw.progettoSIW.services.FotoValidator;
@@ -24,16 +28,26 @@ public class FotoController{
 	@Autowired
 	private FotoValidator fotoValidator;
 	
+	@Autowired
+	private AlbumService albumService;
+	
 	@RequestMapping(value = "/foto", method = RequestMethod.POST)
-	public String newFoto(@Valid @ModelAttribute("foto") Foto foto,
+	public String newFoto(@Valid @ModelAttribute("fotoForm") FotoForm fotoForm,
 			Model model, BindingResult bindingResult) {
 		
-		this.fotoValidator.validate(foto, bindingResult);
+		this.fotoValidator.validate(fotoForm, bindingResult);
 		if(!bindingResult.hasErrors()) {
+			Foto foto= new Foto();
+			foto.setTitolo(fotoForm.getTitolo());
+			foto.setUrl(fotoForm.getUrl());
+			foto.setDataCreazione(LocalDateTime.now());
+			foto.setAlbum(albumService.albumPerId(Long.parseLong(fotoForm.getAlbumId())));
+			
 			this.fotoService.inserisci(foto);
 			model.addAttribute("foto", this.fotoService.tutti());
-			return "foto.html";
+			return "album.html";
 		}else {
+			model.addAttribute("albums", this.albumService.tutti());
 			return "fotoForm.html";
 		}
 	}
@@ -51,7 +65,8 @@ public class FotoController{
 	
 	@RequestMapping("/addFoto")
 	public String addFoto(Model model) {
-		model.addAttribute("foto", new Foto());
+		model.addAttribute("fotoForm", new FotoForm());
+		model.addAttribute("albums", this.albumService.tutti());
 		return "fotoForm.html";
 	}
 

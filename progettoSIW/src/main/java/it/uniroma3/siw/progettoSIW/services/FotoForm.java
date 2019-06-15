@@ -3,7 +3,7 @@ package it.uniroma3.siw.progettoSIW.services;
 public class FotoForm {
 	private String titolo; 
 	private String url; 
-	private String fotografoId;
+	private String albumId;
 	
 	
 	public String getTitolo() {
@@ -12,11 +12,11 @@ public class FotoForm {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public String getFotografoId() {
-		return fotografoId;
+	public String getAlbumId() {
+		return albumId;
 	}
-	public void setFotografoId(String fotografoId) {
-		this.fotografoId = fotografoId;
+	public void setAlbumId(String fotografoId) {
+		this.albumId = fotografoId;
 	}
 	public String getUrl() {
 		return url;

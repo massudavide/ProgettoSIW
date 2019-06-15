@@ -12,13 +12,14 @@ public class FotoValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> aClass) {
-		return Foto.class.equals(aClass);
+		return FotoForm.class.equals(aClass);
 	}
 
 	@Override
 	public void validate(Object o, Errors error) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(error, "nome", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(error, "fotografo", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(error, "titolo", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(error, "url", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(error, "albumId", "required");
 
 
 	}
