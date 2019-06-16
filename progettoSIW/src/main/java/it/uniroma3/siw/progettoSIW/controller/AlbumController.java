@@ -63,6 +63,27 @@ public class AlbumController {
 		model.addAttribute("fotografi", this.fotografoService.tutti());
 		return "albumForm.html";
 	}
+	
+	@RequestMapping({"galleryAlbum/galleryAlbum","/galleryAlbum","gallery/galleryAlbum","galleryFotografi/galleryAlbum"})
+	public String galleryAlbum(Model model) {
+		model.addAttribute("albums", albumService.tutti());
+		return "galleryAlbum.html";
+	}
+	
+	@RequestMapping(value={"/galleryAlbum/{id}","galleryAlbum/galleryAlbum/{id}", "galleryFotografy/galleryAlbum/{id}","gallery/galleryAlbum/{id}"},
+			method = RequestMethod.GET)
+	public String galleryAlbumFotografi(@PathVariable ("id") Long id, Model model) {
+		if(id!=null) {
+			Fotografo fotografo= this.fotografoService.fotografoPerId(id);
+			model.addAttribute("albums", fotografo.getAlbum());
+		}else {
+			model.addAttribute("albums", this.albumService.tutti());
+		}
+		
+		return "galleryAlbum.html";
+	}
+
+
 
 }
 

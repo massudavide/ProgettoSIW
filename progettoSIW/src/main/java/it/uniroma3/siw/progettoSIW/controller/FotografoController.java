@@ -64,5 +64,13 @@ public class FotografoController{
 		model.addAttribute("fotografi", fotografi);
 		return "fotografi.html";
 	}
+	
+	@RequestMapping(value= {"gallery/galleryFotografi", "/galleryFotografi", "galleryAlbum/galleryFotografi"})
+	public String galleryFotografi(Model model) {
+		model.addAttribute("fotografi",fotografoService.tutti());
+		return "galleryFotografi.html";
+	}
+	
+	
 
 }

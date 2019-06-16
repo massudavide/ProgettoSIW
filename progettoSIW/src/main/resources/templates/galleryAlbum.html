@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Gallery - Snapshot by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/CSS/main.css" />
+		<style>
+		.card{
+			box-shadow:0 4px 8px 0 rgba(0,0,0,0.6);
+			transition:0.4;
+			width:300px;
+			background:#fff;
+			text-align:center;
+			font-size:16px;
+			font-family:sans-serif;
+			float:left;
+			margin:10px;
+		}
+		
+		.card:hover{
+		box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+		}
+		
+		.contenitore{
+		padding: 2px 16px;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="page-wrap">
+
+			<!-- Nav User -->
+		<nav id="nav">
+			<ul>
+				<li><a href="/"><span class="icon fa-home"></span></a></li>
+				<li><a href="gallery" class="active"><span
+						class="icon fa-camera-retro"></span></a></li>
+				<hr>
+				<li><a href="mostraCarrello"><span
+						class="icon fa-shopping-cart"></span></a></li>
+
+			</ul>
+		</nav>
+
+			<!-- Main -->
+				<section id="main">
+
+					<!-- Header -->
+						<header id="header">
+							<div>Snapshot <span>by TEMPLATED</span></div>
+						</header>
+
+					<!-- Gallery -->
+						<section id="galleries">
+
+							<!-- Photo Galleries -->
+								<div class="gallery">
+
+									<!-- Filters -->
+										<header>
+											<h1>Album</h1>
+											
+												<a href="gallery"><button>Foto</button></a>
+												<a href="galleryFotografi"><button>Fotografi</button></a>
+										</header>
+
+										<div class="content">
+										
+										<div class="card" th:each="album : ${albums}">
+											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgPNCF0rpCKw4XAKhyRF-ry84AEp4ndu6NXAk-2uhlSe8n7Ybt" style="width:100%">
+											<div class="contenitore">
+											<br/>
+											<h4 th:text="${album.titolo}">Album Titolo</h4>
+											<p th:text="${album.fotografo.nome}+' '+${album.fotografo.cognome}">Autore dell'album</p>
+											<a th:href="@{'/gallery' + '/' + ${album.id}}">Visualizza le sue foto</a>
+											</div>
+										</div>	
+										
+											
+											
+								</div>
+						</section>
+
+				
+
+					<!-- Footer -->
+						<footer id="footer">
+							<div class="copyright">
+								&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>.
+							</div>
+						</footer>
+				</section>
+		</div>
+
+<!-- Scripts -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/jquery.poptrox.min.js"></script>
+			<script src="/js/jquery.scrolly.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<script src="/js/main.js"></script>
+
+	</body>
+</html>

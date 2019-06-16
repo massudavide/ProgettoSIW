@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.progettoSIW.services.AlbumService;
 import it.uniroma3.siw.progettoSIW.services.FotoForm;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
+import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Foto;
+import it.uniroma3.siw.progettoSIW.model.Fotografo;
 import it.uniroma3.siw.progettoSIW.services.FotoValidator;
 
 @Controller
@@ -62,6 +64,34 @@ public class FotoController{
 			return "tutteLeFoto.html";
 		}
 	}
+	
+	@RequestMapping("/")
+	public String inzio(Model model) {
+		model.addAttribute("fotografie", fotoService.tutti());
+		return "index.html";
+	}
+	
+	@RequestMapping(value = {"/gallery","gallery/gallery","galleryAlbum/gallery","galleryFotografo/gallery"})
+	public String gallery(Model model) {
+		model.addAttribute("fotografie", fotoService.tutti());
+		return "gallery.html";
+	}
+	
+	
+	@RequestMapping(value={"/gallery/{id}","gallery/gallery/{id}", "galleryFotografy/gallery/{id}","galleryAlbum/gallery/{id}"},
+			method = RequestMethod.GET)
+	public String galleryFotoAlbum(@PathVariable ("id") Long id, Model model) {
+		if(id!=null) {
+			Album album= this.albumService.albumPerId(id);
+			model.addAttribute("fotografie", album.getFoto());
+		}else {
+			model.addAttribute("fotografie", this.albumService.tutti());
+		}
+		
+		return "gallery.html";
+	}
+
+	
 	
 	@RequestMapping("/addFoto")
 	public String addFoto(Model model) {
