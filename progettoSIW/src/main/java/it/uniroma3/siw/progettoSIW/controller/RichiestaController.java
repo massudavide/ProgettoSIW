@@ -106,6 +106,26 @@ public class RichiestaController {
 		}
 	}
 	
+	@RequestMapping(value = "/selezionaFoto/{id}", method = RequestMethod.GET)
+	public String selezionaFoto(@PathVariable("id") Long id, Model model) {
+		if(id==null) {
+			return "error404.html";
+		}
+		else {
+			boolean prenotato=false;
+			Richiesta richiesta= (Richiesta) session.getAttribute("richiesta");
+			if (richiesta!=null) {
+			List<Foto> lista= richiesta.getListaFoto();
+			for (Foto f:lista)
+				if (f.getId().equals(id))
+					prenotato=true;
+			}
+			model.addAttribute("fotografia", fotoService.fotoPerId(id));
+			model.addAttribute("prenotato",prenotato);
+			return "fotoSelezionata.html";
+		}
+	}
+	
 	
 	
 	//ORA NON SERVE

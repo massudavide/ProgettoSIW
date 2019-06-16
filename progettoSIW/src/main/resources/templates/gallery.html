@@ -54,7 +54,7 @@
 										<div class="content">
 										
 										<div class="media" th:each="fotografia : ${fotografie}">
-											<a th:href="addFoto"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt="" title="This right here is a caption." /></a>
+											<a th:href="@{'/selezionaFoto' + '/' + ${fotografia.id}}"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt="" title="This right here is a caption." /></a>
 										</div>	
 											
 								</div>
