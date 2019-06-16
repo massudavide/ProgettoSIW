@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+		<h2>Richieste:</h2>
+		<div th:each="richiesta : ${richieste}"> 
+<div>Id: <span th:text="${richiesta.id}">1</span> </div>
+<div> Fotografo:<span th:text="${richiesta.email}">fast-disco@hotmail.it</span> </div>
+<br>
+</div>
+	</div>
+</body>
+</html>

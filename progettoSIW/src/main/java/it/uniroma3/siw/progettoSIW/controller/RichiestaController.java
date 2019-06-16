@@ -50,6 +50,12 @@ public class RichiestaController {
 			}	 
 	}
 	
+	@RequestMapping("/mostraRichieste")
+	public String mostraRichieste(Model model) {
+		model.addAttribute("richieste",richiestaService.tutti()) ;
+		return "richieste.html";
+	}
+	
 	@RequestMapping("/svuotaCarrello")
 	public String svuotaCarrello() {
 		session.invalidate();
