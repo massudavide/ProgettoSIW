@@ -4,18 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.progettoSIW.model.Foto;
+import it.uniroma3.siw.progettoSIW.model.Fotografo;
 import it.uniroma3.siw.progettoSIW.model.Richiesta;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.services.RichiestaService;
+import it.uniroma3.siw.progettoSIW.services.RichiestaValidator;
 
 @Controller
 public class RichiestaController {
@@ -24,16 +29,15 @@ public class RichiestaController {
 	private RichiestaService richiestaService;
 	
 	@Autowired
+	private RichiestaValidator richiestaValidator;
+	
+	@Autowired
 	private FotoService fotoService;
 	
 	@Autowired
 	private HttpSession session;
 	
-	//BHO
-	@RequestMapping("/addFotos")
-	public void addRichiesta(Model model) {
-		model.addAttribute("richiesta", new Richiesta()); 
-	}
+
 	
 	@RequestMapping("/mostraCarrello")
 	public String mostraCarrello(Model model) {
@@ -45,6 +49,13 @@ public class RichiestaController {
 				return "carrello.html";
 			}	 
 	}
+	
+	@RequestMapping("/svuotaCarrello")
+	public String svuotaCarrello() {
+		session.invalidate();
+		return "carrelloVuoto.html";
+		}	
+	
 	
 	
 	// AGGIUNGO FOTO AL CARRELLO
@@ -60,16 +71,13 @@ public class RichiestaController {
 			r= new Richiesta();
 			session.setAttribute("richiesta", r);
 			r.setListaFoto(new ArrayList<Foto>());
-			richiestaService.inserisci(r);
 			}
 			else {
 				r=(Richiesta) session.getAttribute("richiesta");
 			}
 			
 			r.getListaFoto().add(foto);
-			richiestaService.inserisci(r);
-			model.addAttribute("fotografie", r.getListaFoto());
-			return "carrello.html";
+			return "index.html";
 		}
 	}
 	
@@ -87,7 +95,6 @@ public class RichiestaController {
 				if (f.getId().equals(id))
 					fotoDaEliminare=f;
 			lista.remove(fotoDaEliminare);
-			richiestaService.inserisci(richiesta);
 			model.addAttribute("fotografie", richiesta.getListaFoto());
 			return "carrello.html";
 		}
@@ -105,6 +112,29 @@ public class RichiestaController {
 			model.addAttribute("richiesta", this.richiestaService.richiestaPerId(id));
 			return "richiesta.html";
 		}
+	}
+	
+	
+	@RequestMapping(value = "/richiesta", method = RequestMethod.POST)
+	public String confermaRichiesta(@Valid @ModelAttribute("richiesta") Richiesta richiesta,
+			Model model, BindingResult bindingResult) {
+		
+		this.richiestaValidator.validate(richiesta, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			Richiesta r= (Richiesta) session.getAttribute("richiesta");
+			richiesta.setListaFoto(r.getListaFoto());
+			this.richiestaService.inserisci(richiesta);
+			session.invalidate();
+			return "album.html";
+		}else {
+			return "richiestaForm.html";
+		}
+	}
+	
+	@RequestMapping("/inoltraRichiesta")
+	public String inoltraRichiesta(Model model) {
+		model.addAttribute("richiesta", session.getAttribute("richiesta"));
+		return "richiestaForm.html";
 	}
 	
 }
