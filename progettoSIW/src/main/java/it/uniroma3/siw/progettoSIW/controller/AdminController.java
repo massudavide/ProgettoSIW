@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.progettoSIW.model.Admin;
 import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Fotografo;
-import it.uniroma3.siw.progettoSIW.model.Richiesta;
 import it.uniroma3.siw.progettoSIW.services.AdminService;
 import it.uniroma3.siw.progettoSIW.services.AdminValidator;
-import it.uniroma3.siw.progettoSIW.services.AlbumForm;
 import it.uniroma3.siw.progettoSIW.services.AlbumService;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.services.FotografoService;
@@ -28,27 +26,30 @@ import it.uniroma3.siw.progettoSIW.services.RichiestaService;
 
 @Controller
 public class AdminController {
-	
+
 	@Autowired
 	private AdminService adminService;
-	
+
 	@Autowired
 	private AdminValidator adminValidator;
-	
+
 	@Autowired
 	private HttpSession session;
-	
+
 	@Autowired
 	private FotografoService fotografoService;
-	
+
 	@Autowired
 	private AlbumService albumService;
-	
+
 	@Autowired
 	private FotoService fotoService;
-	
 
-	
+	@Autowired
+	private RichiestaService richiestaService;
+
+
+
 	@RequestMapping(value = "/admin", method = RequestMethod.POST)
 	public String newAlbum(@Valid @ModelAttribute("admin") Admin admin, 
 			Model model, BindingResult bindingResult) {
@@ -60,23 +61,23 @@ public class AdminController {
 					if (a.getPsw().equals(admin.getPsw()))
 						session.setAttribute("admin", a);
 			}				
-			
-		if (session.getAttribute("admin")!=null) {
-			model.addAttribute("fotografie", fotoService.tutti());
-			return "indexAdmin.html";
+
+			if (session.getAttribute("admin")!=null) {
+				model.addAttribute("fotografie", fotoService.tutti());
+				return "indexAdmin.html";
+			}
+
+			else {
+				model.addAttribute("frase", "Attenzione! Username o password errata.");
+				model.addAttribute("admin", new Admin());
+				return "adminForm.html";
+
+			}
 		}
-		
-		else {
-			model.addAttribute("frase", "Attenzione! Username o password errata.");
-			model.addAttribute("admin", new Admin());
-			return "adminForm.html";
-	
-		}
-		}
-		
+
 		return "adminForm.html";
 	}
-	
+
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("admin", new Admin());
@@ -84,39 +85,42 @@ public class AdminController {
 		adminService.inserisci(a);
 		return "adminForm.html";
 	}
-	
-	
+
+
 	@RequestMapping("/utente")
 	public String utente(Model model) {
 		session.invalidate();
 		model.addAttribute("fotografie", fotoService.tutti());
 		return "index.html";
 	}
-	
+
 	@RequestMapping("/ricerca")
 	public String ricerca() {
-		return "ricerca.html";
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else
+			return "ricerca.html";
 	}
-	
+
 	@RequestMapping("/ricercaFotografi")
 	public String ricercaFotografi(Model model) {
 		model.addAttribute("fotografi", fotografoService.tutti());
 		return "fotografi.html";
 	}
-	
+
 	@RequestMapping("/ricercaAlbum")
 	public String ricercaAlbum(Model model) {
 		model.addAttribute("albums", albumService.tutti());
 		return "albums.html";
 	}  
-	
+
 	@RequestMapping("/ricercaFotografie")
 	public String ricercaFotografie(Model model) {
 		model.addAttribute("fotografie", fotoService.tutti());
 		return "fotografie.html";
 	} 
-	
-	
+
+
 	//Id dell'album
 	@RequestMapping(value= "/ricercaFotografie/{id}", method = RequestMethod.GET)
 	public String ricercaFotos(@PathVariable ("id") Long id, Model model) {
@@ -126,10 +130,10 @@ public class AdminController {
 		}else {
 			model.addAttribute("fotografie", this.fotoService.tutti());
 		}
-		
+
 		return "fotografie.html";
 	}
-	
+
 	//Id del fotografo
 	@RequestMapping(value=  "/ricercaAlbum/{id}", method = RequestMethod.GET)
 	public String ricercaAlbums(@PathVariable ("id") Long id, Model model) {
@@ -139,10 +143,20 @@ public class AdminController {
 		}else {
 			model.addAttribute("albums", this.albumService.tutti());
 		}
-		
+
 		return "albums.html";
 	}
-	
+
+	@RequestMapping("/mostraRichieste")
+	public String mostraRichieste(Model model) {
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("richieste",richiestaService.tutti()) ;
+			return "richieste.html";
+		}
+	}
+
 
 	
 		

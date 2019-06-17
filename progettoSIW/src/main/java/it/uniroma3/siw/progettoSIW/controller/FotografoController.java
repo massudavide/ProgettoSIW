@@ -20,17 +20,17 @@ import it.uniroma3.siw.progettoSIW.services.FotografoValidator;
 
 @Controller
 public class FotografoController{
-	
+
 	@Autowired
 	private FotografoService fotografoService;
 
 	@Autowired
 	private FotografoValidator fotografoValidator;
-	
+
 	@RequestMapping(value = "/fotografo", method = RequestMethod.POST)
 	public String newFotografo(@Valid @ModelAttribute("fotografo") Fotografo fotografo,
 			Model model, BindingResult bindingResult) {
-		
+
 		this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.fotografoService.inserisci(fotografo);
@@ -40,7 +40,7 @@ public class FotografoController{
 			return "fotografoForm.html";
 		}
 	}
-	
+
 	@RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
 	public String getFotografo(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
@@ -51,28 +51,28 @@ public class FotografoController{
 			return "fotografi.html";
 		}
 	}
-	
+
 	@RequestMapping("/addFotografo")
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
 		return "fotografoForm.html";
 	}
-	
+
 	@RequestMapping("/lista")
 	public String lista(Model model) {
 		List<Fotografo> fotografi=fotografoService.tutti();
 		model.addAttribute("fotografi", fotografi);
 		return "fotografi.html";
 	}
-	
+
 	@RequestMapping(value= {"gallery/galleryFotografi", "/galleryFotografi", "galleryAlbum/galleryFotografi"})
 	public String galleryFotografi(Model model) {
 		model.addAttribute("fotografi",fotografoService.tutti());
 		return "galleryFotografi.html";
 	}
-	
 
-	
-	
+
+
+
 
 }

@@ -18,7 +18,6 @@ import it.uniroma3.siw.progettoSIW.services.FotoForm;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Foto;
-import it.uniroma3.siw.progettoSIW.model.Fotografo;
 import it.uniroma3.siw.progettoSIW.services.FotoValidator;
 
 @Controller
@@ -73,7 +72,7 @@ public class FotoController{
 		return "index.html";
 	}
 	
-	@RequestMapping(value = {"/gallery","gallery/gallery","galleryAlbum/gallery","galleryFotografo/gallery"})
+	@RequestMapping(value = {"/gallery","gallery/gallery","galleryAlbum/gallery","galleryFotografo/gallery","addFotoRichiesta/gallery"})
 	public String gallery(Model model) {
 		model.addAttribute("fotografie", fotoService.tutti());
 		return "gallery.html";
