@@ -47,7 +47,7 @@ public class FotoController{
 			
 			this.fotoService.inserisci(foto);
 			model.addAttribute("fotografie", this.fotoService.tutti());
-			return "fotografie.html";
+			return "indexAdmin.html";
 		}else {
 			model.addAttribute("albums", this.albumService.tutti());
 			return "fotoForm.html";

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
 <body>
-<div th:each="fotografia : ${fotografie}"> 
-<div>Nome: <span th:text="${fotografia.titolo}">Andrea</span> </div>
-<div> Album: <span th:text="${fotografia.album.titolo}">Andrea</span> </div>
-<div> Fotografo:<span th:text="${fotografia.album.fotografo.nome}">Andrea</span> </div>
-<div><a th:href="@{'/addFotoRichiesta' + '/' + ${fotografia.id}}"> Aggiungi</a> </div>
-<br>
-</div>
+	<div>
+		<h2>Fotografie:</h2>
+		<table>
+		<tr><th>Titolo</th><th></th><th>Album</th><th></th><th>Fotografo</th></tr>
+			<tr th:each="foto: ${fotografie}">  
+				<td th:text="${foto.titolo}">marco verdi</td><td></td>
+				<td th:text="${foto.album.titolo}"></td><td></td>
+				<td th:text="${foto.album.fotografo.nome} + ' ' + ${foto.album.fotografo.cognome}">marco verdi</td><td></td><td></td>
+				<td><button>Elimina</button></td>
+		</tr>
+		</table>
+	</div>
 </body>
 </html>
