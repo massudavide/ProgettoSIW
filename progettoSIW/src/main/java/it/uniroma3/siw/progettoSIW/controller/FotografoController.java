@@ -71,6 +71,8 @@ public class FotografoController{
 		return "galleryFotografi.html";
 	}
 	
+
+	
 	
 
 }

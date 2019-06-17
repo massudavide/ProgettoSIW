@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.progettoSIW.model.Admin;
 import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Fotografo;
+import it.uniroma3.siw.progettoSIW.model.Richiesta;
 import it.uniroma3.siw.progettoSIW.services.AdminService;
 import it.uniroma3.siw.progettoSIW.services.AdminValidator;
 import it.uniroma3.siw.progettoSIW.services.AlbumForm;
 import it.uniroma3.siw.progettoSIW.services.AlbumService;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.services.FotografoService;
+import it.uniroma3.siw.progettoSIW.services.RichiestaService;
 
 @Controller
 public class AdminController {
@@ -45,25 +47,33 @@ public class AdminController {
 	@Autowired
 	private FotoService fotoService;
 	
+
+	
 	@RequestMapping(value = "/admin", method = RequestMethod.POST)
 	public String newAlbum(@Valid @ModelAttribute("admin") Admin admin, 
 			Model model, BindingResult bindingResult) {
 		this.adminValidator.validate(admin, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			List<Admin> admins= adminService.tutti();
-			for (Admin a:admins)
+			for (Admin a:admins) {
 				if (a.getUsername().equals(admin.getUsername()))  
 					if (a.getPsw().equals(admin.getPsw()))
 						session.setAttribute("admin", a);
-						
+			}				
 			
-		if (session.getAttribute("admin")!=null)
+		if (session.getAttribute("admin")!=null) {
+			model.addAttribute("fotografie", fotoService.tutti());
 			return "indexAdmin.html";
+		}
+		
 		else {
 			model.addAttribute("frase", "Attenzione! Username o password errata.");
+			model.addAttribute("admin", new Admin());
 			return "adminForm.html";
-	}
-		}	
+	
+		}
+		}
+		
 		return "adminForm.html";
 	}
 	
@@ -77,8 +87,9 @@ public class AdminController {
 	
 	
 	@RequestMapping("/utente")
-	public String utente() {
+	public String utente(Model model) {
 		session.invalidate();
+		model.addAttribute("fotografie", fotoService.tutti());
 		return "index.html";
 	}
 	
@@ -131,6 +142,11 @@ public class AdminController {
 		
 		return "albums.html";
 	}
+	
+
+	
+		
+		
 }
 
 

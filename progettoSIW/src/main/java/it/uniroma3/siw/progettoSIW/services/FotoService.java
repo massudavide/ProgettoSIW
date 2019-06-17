@@ -24,8 +24,16 @@ public class FotoService {
 	public List<Foto> tutti(){
 		return (List<Foto>) fotoRepository.findAll();
 	}
+	
+	
+	
 
 	public Foto fotoPerId(Long id) {
 		return this.fotoRepository.findById(id).get();
+	}
+	
+	@Transactional 
+	public void elimina(Long id) {
+		fotoRepository.deleteById(id);
 	}
 }

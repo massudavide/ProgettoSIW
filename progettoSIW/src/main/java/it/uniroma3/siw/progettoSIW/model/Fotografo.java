@@ -13,7 +13,7 @@ public class Fotografo {
 	private String nome;
 	@Column(nullable=false)
 	private String cognome;
-	@OneToMany (mappedBy = "fotografo")
+	@OneToMany (mappedBy = "fotografo") 
 	private List<Album> album;
 
 

@@ -30,6 +30,10 @@ public class AlbumService {
 		return (List<Album>) albumRepository.findAll();
 	}
 	
+	@Transactional 
+	public void elimina(Long id) {
+		 albumRepository.deleteById(id);
+	}
 }
 
 

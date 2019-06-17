@@ -7,11 +7,15 @@
 <body>
 <div>
 		<h2>Richieste:</h2>
-		<div th:each="richiesta : ${richieste}"> 
-<div>Id: <span th:text="${richiesta.id}">1</span> </div>
-<div> Fotografo:<span th:text="${richiesta.email}">fast-disco@hotmail.it</span> </div>
-<br>
-</div>
+		<table>
+		<tr>
+		<th>RichiestaID</th><th>Email dell' utente</th><th>Lista foto richieste</th></tr>
+		<tr th:each="richiesta : ${richieste}"> 
+<td th:text="${richiesta.id}">1</td>
+<td th:text="${richiesta.email}">fast-disco@hotmail.it</td>
+<td><a th:href="@{'/richiesta' + '/' + ${richiesta.id}}"><button>Lista foto</button></a></td>
+</tr>
+</table>
 	</div>
 </body>
 </html>

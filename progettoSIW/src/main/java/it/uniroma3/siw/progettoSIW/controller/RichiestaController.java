@@ -39,7 +39,7 @@ public class RichiestaController {
 	
 
 	
-	@RequestMapping("/mostraCarrello")
+	@RequestMapping(value= {"/mostraCarrello", "gallery/mostraCarrello", "galleryAlbum/mostraCarrello"}, method = RequestMethod.GET)
 	public String mostraCarrello(Model model) {
 		Richiesta richiesta= (Richiesta) session.getAttribute("richiesta");
 		if (richiesta==null || richiesta.getListaFoto().size()==0)
@@ -135,8 +135,8 @@ public class RichiestaController {
 			return "error404.html";
 		}
 		else {
-			model.addAttribute("richiesta", this.richiestaService.richiestaPerId(id));
-			return "richiesta.html";
+			model.addAttribute("fotografie", this.richiestaService.richiestaPerId(id).getListaFoto());
+			return "fotografie.html";
 		}
 	}
 	

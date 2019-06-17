@@ -10,7 +10,6 @@
 				<td th:text="${album.titolo}">titolo</td> <td></td>
 				<td th:text="${album.fotografo.nome} + ' ' +${album.fotografo.cognome}">marco verdi</td> <td></td> <td></td>
 				<td><a th:href="@{'/ricercaFotografie' + '/' + ${album.id}}"><button>Fotografie</button></a></td>
-				<td><button>Elimina</button></td>
 				</tr>
 		</table>
 	</div>

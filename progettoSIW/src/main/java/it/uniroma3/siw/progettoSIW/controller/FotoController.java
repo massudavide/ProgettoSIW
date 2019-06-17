@@ -53,6 +53,8 @@ public class FotoController{
 			return "fotoForm.html";
 		}
 	}
+		
+
 	
 	@RequestMapping(value = "/foto/{id}", method = RequestMethod.GET)
 	public String getFoto(@PathVariable ("id") Long id, Model model) {
@@ -99,5 +101,8 @@ public class FotoController{
 		model.addAttribute("albums", this.albumService.tutti());
 		return "fotoForm.html";
 	}
+	
+	
+
 
 }

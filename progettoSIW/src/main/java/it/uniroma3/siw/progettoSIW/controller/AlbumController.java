@@ -82,6 +82,9 @@ public class AlbumController {
 		
 		return "galleryAlbum.html";
 	}
+	
+	
+	
 
 
 

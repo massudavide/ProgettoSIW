@@ -11,7 +11,7 @@ public class Richiesta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToMany
+	@ManyToMany 
 	private List<Foto> listaFoto;
 	
 	private String email;

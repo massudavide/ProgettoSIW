@@ -22,6 +22,11 @@ public class FotografoService {
 	public List<Fotografo> tutti(){
 		return (List<Fotografo>) fotografoRepository.findAll();
 	}
+	
+	@Transactional 
+	public void elimina(Long id) {
+		 fotografoRepository.deleteById(id);
+	}
 
 	public Fotografo fotografoPerId(Long id) {
 		return this.fotografoRepository.findById(id).get();
