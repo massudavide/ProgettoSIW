@@ -16,6 +16,10 @@ public Admin (String nome, String psw) {
 	this.username=nome;
 	this.psw=psw;
 }
+
+public Admin() {
+	
+}
 	
 	// Getters & Setters
 	public String getUsername() {
@@ -30,6 +34,16 @@ public Admin (String nome, String psw) {
 	public void setPsw(String psw) {
 		this.psw = psw;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+
+<head>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Quicksand:100,300,500">
+<link rel="stylesheet" href="/CSS/style.css">
+<title>Transparent Login Form</title>
+</head>
+
+<body>
+	<div class="full-screen-containerAlbum">
+		<div class="login-container">
+			<h3 class="login-title">Inserimento nuovo Album</h3>
+			
+			<span th:text="${frase}"></span>
+			
+			<form th:action="@{/admin}" method="POST" th:object="${admin}">
+				
+				<div class="input-group">
+					<label>Username</label> <input type="text" th:field="*{username}" /> <span
+						th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error</span>
+				</div>
+
+				       <div class="input-group">
+					<label>Password</label> <input type="text" th:field="*{psw}" /> <span
+						th:if="${#fields.hasErrors('psw')}" th:errors="*{psw}">error</span>
+				</div>
+				
+				
+				<button type="submit" class="login-button">Login</button>
+				
+		</form>
+	</div>
+	</div>
+</body>
+
+</html>
