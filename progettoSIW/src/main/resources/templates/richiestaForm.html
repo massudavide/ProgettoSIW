@@ -4,17 +4,17 @@
 
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:100,300,500">
-  <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="/CSS/style2.css">
   <title>Transparent Login Form</title>
 </head>
 
 <body>
-  <div class="full-screen-containerFotografo">
+  <div class="full-screen-containerRichiesta">
     <div class="login-container">
       <h3 class="login-title">Inoltro richiesta</h3>
       <form th:action="@{/richiesta}" method="POST" th:object="${richiesta}">
         <div class="input-group">
-          <label>Email</label>
+          <label>Inserisci la tua email</label>
         <input type="text" th:field="*{email}" />
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error</span>
         </div>

@@ -7,9 +7,8 @@ html, body {
     margin: 0;
 }
 
-
-.full-screen-containerFotografo {
-    background-image: url("https://images.wallpaperscraft.com/image/photographer_sea_sunset_123418_1920x1080.jpg");
+.full-screen-containerAdmin {
+    background-image: url("https://www.york.ac.uk/media/study/courses/postgraduate/computerscience/cyber%20security%20banner.jpg");
     height: 100vh;
     width: 100vw;
     background-size: cover;
@@ -19,9 +18,19 @@ html, body {
     align-items: center;
 }
 
+.full-screen-containerFoto{
+    background-image: url("http://www.nationalgeographic.it/images/2016/12/06/164441083-abc66e5b-8d1b-46d7-a0aa-024b9dea5edb.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.full-screen-containerAlbum {
-    background-image: url("https://cdn.pixabay.com/photo/2018/03/29/17/26/wallpaper-3272886_960_720.jpg");
+.full-screen-containerRichiesta {
+    background-image: url("http://sf.co.ua/12/10/wallpaper-2292404.jpg");
     height: 100vh;
     width: 100vw;
     background-size: cover;
@@ -99,4 +108,3 @@ html, body {
 .login-button:focus {
     background-color: hsla(201, 100%, 50%, 0.5)
 }
-
