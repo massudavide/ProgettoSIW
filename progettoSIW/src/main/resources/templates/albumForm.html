@@ -17,7 +17,7 @@
 			<form th:action="@{/album}" method="POST" th:object="${albumForm}">
 				
 				<div class="input-group">
-					<label>Titolo</label> <input type="text" th:field="*{titolo}" /> <span
+					<label>Titolo</label> <input type="text" th:field="*{titolo}" /> <span style="color:white"
 						th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}">error</span>
 				</div>
 
@@ -25,9 +25,9 @@
 				          <label>Fotografo</label>
 							<select th:field="*{fotografoId}">
 				<option value="">Seleziona Fotografo</option>
-				<option th:each="fotografo : ${fotografi}" th:value="${fotografo.id}" th:text="${fotografo.nome}"></option>
+				<option th:each="fotografo : ${fotografi}" th:value="${fotografo.id}" th:text="${fotografo.nome} + ' '+${fotografo.cognome}"></option>
 				</select> 
-				<span
+				<span style="color:white"
 						th:if="${#fields.hasErrors('fotografoId')}" th:errors="*{fotografoId}">error</span> 
 						</div>
 				

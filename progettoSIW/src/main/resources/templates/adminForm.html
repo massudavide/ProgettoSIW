@@ -14,17 +14,17 @@
 		<div class="login-container">
 			<h3 class="login-title">Vuoi accedere come Admin?</h3>
 			
-			<span th:text="${frase}"></span>
+			<span style="color:white" th:text="${frase}"></span>
 			
 			<form th:action="@{/admin}" method="POST" th:object="${admin}">
 				
 				<div class="input-group">
-					<label>Username</label> <input type="text" th:field="*{username}" /> <span
+					<label>Username</label> <input type="text" th:field="*{username}" /> <span style="color:white"
 						th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error</span>
 				</div>
 
 				       <div class="input-group">
-					<label>Password</label> <input type="text" th:field="*{psw}" /> <span
+					<label>Password</label> <input type="text" th:field="*{psw}" /> <span style="color:white"
 						th:if="${#fields.hasErrors('psw')}" th:errors="*{psw}">error</span>
 				</div>
 				

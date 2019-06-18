@@ -110,9 +110,9 @@ body {
     </div>
     <div class="details">
       <div class="center">
-        <h1 th:text="${fotografia.titolo}">Someone famous</h1><br>
-        <b></b><span th:text="${fotografia.album.fotografo.nome} + ' ' + ${fotografia.album.fotografo.cognome}">team leader</span></b><br><br>
-        <p th:text="'Questa foto appartiene ad un album intitolato'+ ' '+ ${fotografia.album.titolo}">Lorem ipsum is simple dummy text on the printing and typesetting industry.</p>
+        <h1 th:text="${fotografia.titolo}">titolo foto</h1><br>
+        <b></b><span th:text="${fotografia.album.fotografo.nome} + ' ' + ${fotografia.album.fotografo.cognome}">fotografo</span></b><br><br>
+        <p th:text="'Questa foto appartiene ad un album intitolato'+ ' : '+ ${fotografia.album.titolo}">album</p>
         <ul>  
         </br>
 					 <li><a th:if="${prenotato}" th:href="@{'/deleteFotoRichiesta' + '/' + ${fotografia.id}}"><i class="fa fa-trash"
