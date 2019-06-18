@@ -18,6 +18,14 @@ public class Foto {
 	@Column(nullable=false)
 	private String url;
 	
+
+//Costruttori	
+public Foto (String titolo, Album album, String url) {
+	this.dataCreazione= LocalDateTime.now();
+	this.titolo=titolo;
+	this.album=album;
+	this.url=url;
+}	
 	
 public Foto () {
 	this.dataCreazione= LocalDateTime.now();

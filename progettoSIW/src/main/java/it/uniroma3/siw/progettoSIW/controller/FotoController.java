@@ -53,18 +53,6 @@ public class FotoController{
 		}
 	}
 		
-
-	
-	@RequestMapping(value = "/foto/{id}", method = RequestMethod.GET)
-	public String getFoto(@PathVariable ("id") Long id, Model model) {
-		if(id!=null) {
-			model.addAttribute("foto", this.fotoService.fotoPerId(id));
-			return "foto.html";
-		}else {
-			model.addAttribute("foto", this.fotoService.tutti());
-			return "tutteLeFoto.html";
-		}
-	}
 	
 	@RequestMapping("/")
 	public String inzio(Model model) {
@@ -94,12 +82,6 @@ public class FotoController{
 
 	
 	
-	@RequestMapping("/addFoto")
-	public String addFoto(Model model) {
-		model.addAttribute("fotoForm", new FotoForm());
-		model.addAttribute("albums", this.albumService.tutti());
-		return "fotoForm.html";
-	}
 	
 	
 

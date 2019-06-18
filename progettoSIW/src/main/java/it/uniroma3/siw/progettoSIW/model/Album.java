@@ -1,5 +1,6 @@
 package it.uniroma3.siw.progettoSIW.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -18,6 +19,17 @@ public class Album {
 	
 	@ManyToOne
 	private Fotografo fotografo;
+	
+	//Costruttori
+	public Album (String titolo, Fotografo f) {
+		this.titolo=titolo;
+		this.fotografo=f;
+		this.foto= new ArrayList<>();
+	}
+	
+	public Album() {
+		
+	}
 	
 	
 	

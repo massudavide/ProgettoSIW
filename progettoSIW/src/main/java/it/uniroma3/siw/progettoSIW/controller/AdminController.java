@@ -19,7 +19,9 @@ import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Fotografo;
 import it.uniroma3.siw.progettoSIW.services.AdminService;
 import it.uniroma3.siw.progettoSIW.services.AdminValidator;
+import it.uniroma3.siw.progettoSIW.services.AlbumForm;
 import it.uniroma3.siw.progettoSIW.services.AlbumService;
+import it.uniroma3.siw.progettoSIW.services.FotoForm;
 import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.services.FotografoService;
 import it.uniroma3.siw.progettoSIW.services.RichiestaService;
@@ -157,6 +159,38 @@ public class AdminController {
 		}
 	}
 
+	@RequestMapping("/addFotografo")
+	public String addFotografo(Model model) {
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("fotografo", new Fotografo());
+			return "fotografoForm.html";
+		}
+	}
+	
+	@RequestMapping("/addAlbum")
+	public String addAlbum(Model model) {
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("albumForm", new AlbumForm());
+			model.addAttribute("fotografi", this.fotografoService.tutti());
+			return "albumForm.html";
+		}
+	}
+	
+	
+	@RequestMapping("/addFoto")
+	public String addFoto(Model model) {
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("fotoForm", new FotoForm());
+			model.addAttribute("albums", this.albumService.tutti());
+			return "fotoForm.html";
+		}
+	}
 
 	
 		

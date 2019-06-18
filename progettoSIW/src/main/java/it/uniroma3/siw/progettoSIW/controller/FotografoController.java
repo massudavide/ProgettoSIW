@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.progettoSIW.services.FotoService;
 import it.uniroma3.siw.progettoSIW.services.FotografoService;
 import it.uniroma3.siw.progettoSIW.model.Fotografo;
 import it.uniroma3.siw.progettoSIW.services.FotografoValidator;
@@ -23,6 +24,9 @@ public class FotografoController{
 
 	@Autowired
 	private FotografoService fotografoService;
+	
+	@Autowired
+	private FotoService fotoService;
 
 	@Autowired
 	private FotografoValidator fotografoValidator;
@@ -34,8 +38,8 @@ public class FotografoController{
 		this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.fotografoService.inserisci(fotografo);
-			model.addAttribute("fotografo", this.fotografoService.tutti());
-			return "fotografo.html";
+			model.addAttribute("fotografie", this.fotoService.tutti());
+			return "indexAdmin.html";
 		}else {
 			return "fotografoForm.html";
 		}
@@ -52,11 +56,6 @@ public class FotografoController{
 		}
 	}
 
-	@RequestMapping("/addFotografo")
-	public String addFotografo(Model model) {
-		model.addAttribute("fotografo", new Fotografo());
-		return "fotografoForm.html";
-	}
 
 	@RequestMapping("/lista")
 	public String lista(Model model) {

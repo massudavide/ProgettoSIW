@@ -26,6 +26,9 @@ public class AlbumController {
 	
 	@Autowired
 	private FotografoService fotografoService;
+	
+	@Autowired
+	private FotoService fotoService;
 
 	
 	@RequestMapping(value = "/album", method = RequestMethod.POST)
@@ -38,8 +41,8 @@ public class AlbumController {
 			album.setTitolo(albumForm.getTitolo());
 			album.setFotografo(fotografoService.fotografoPerId(Long.parseLong(albumForm.getFotografoId())));
 			this.albumService.inserisci(album);
-			model.addAttribute("album", this.albumService.tutti());
-			return "album.html"; 
+			model.addAttribute("fotografie", this.fotoService.tutti());
+			return "indexAdmin.html"; 
 		}else {
 			model.addAttribute("fotografi", this.fotografoService.tutti());
 			return "albumForm.html";
@@ -57,12 +60,6 @@ public class AlbumController {
 		}
 	}
 	
-	@RequestMapping("/addAlbum")
-	public String addAlbum(Model model) {
-		model.addAttribute("albumForm", new AlbumForm());
-		model.addAttribute("fotografi", this.fotografoService.tutti());
-		return "albumForm.html";
-	}
 	
 	@RequestMapping({"galleryAlbum/galleryAlbum","/galleryAlbum","gallery/galleryAlbum","galleryFotografi/galleryAlbum"})
 	public String galleryAlbum(Model model) {
