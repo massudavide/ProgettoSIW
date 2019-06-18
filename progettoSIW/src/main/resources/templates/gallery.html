@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Gallery - Snapshot by TEMPLATED</title>
+		<title>Gallery</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/CSS/main.css" />
@@ -28,7 +28,7 @@
 
 					<!-- Header -->
 						<header id="header">
-							<div>Snapshot <span>by TEMPLATED</span></div>
+							<div>Gallery <span>by SILPH</span></div>
 						</header>
 
 					<!-- Gallery -->
@@ -50,7 +50,7 @@
 										<div class="content">
 										
 										<div class="media" th:each="fotografia : ${fotografie}">
-											<a th:href="@{'/selezionaFoto' + '/' + ${fotografia.id}}"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt="" title="This right here is a caption." /></a>
+											<a th:href="@{'/selezionaFoto' + '/' + ${fotografia.id}}"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt="" /></a>
 										</div>	
 											
 								</div>
@@ -60,7 +60,7 @@
 					<!-- Footer -->
 						<footer id="footer">
 							<div class="copyright">
-								&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>.
+								&copy; Untitled Design: <a href="#">Marini</a> e <a href="#">Massuda</a>.
 							</div>
 						</footer>
 				</section>
