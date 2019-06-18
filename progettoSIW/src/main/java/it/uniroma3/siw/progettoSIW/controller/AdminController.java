@@ -51,6 +51,18 @@ public class AdminController {
 	private RichiestaService richiestaService;
 
 
+	@RequestMapping(value="/indexAdmin")
+	public String indexAdmin (Model model) {
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("fotografie", fotoService.tutti());
+			return "indexAdmin.html";
+		}
+		
+	} 
+	
+	
 
 	@RequestMapping(value = "/admin", method = RequestMethod.POST)
 	public String newAlbum(@Valid @ModelAttribute("admin") Admin admin, 
