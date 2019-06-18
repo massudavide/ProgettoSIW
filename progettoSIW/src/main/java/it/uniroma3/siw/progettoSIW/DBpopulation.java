@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import it.uniroma3.siw.progettoSIW.model.Admin;
 import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Foto;
 import it.uniroma3.siw.progettoSIW.model.Fotografo;
@@ -24,6 +25,9 @@ public class DBpopulation implements ApplicationRunner{
 
 	@Autowired
 	private FotografoRepository fotografoRepository;
+	
+	@Autowired
+	private AdminRepository adminRepository;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -114,6 +118,10 @@ public class DBpopulation implements ApplicationRunner{
 		this.fotoRepository.save(f8);
 		this.fotoRepository.save(f9);
 		this.fotoRepository.save(f10);
+		
+		
+		Admin admin= new Admin("admin", "admin");
+		this.adminRepository.save(admin);
 	
 
 

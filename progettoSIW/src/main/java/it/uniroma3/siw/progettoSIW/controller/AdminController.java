@@ -80,11 +80,10 @@ public class AdminController {
 		return "adminForm.html";
 	}
 
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("admin", new Admin());
-		Admin a= new Admin("ciao", "ciao");
-		adminService.inserisci(a);
 		return "adminForm.html";
 	}
 

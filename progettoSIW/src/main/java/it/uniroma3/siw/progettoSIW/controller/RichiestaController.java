@@ -78,7 +78,8 @@ public class RichiestaController {
 			}
 
 			r.getListaFoto().add(foto);
-			return "index.html";
+			model.addAttribute("fotografie", fotoService.tutti());
+			return "gallery.html";
 		}
 	}
 
@@ -151,7 +152,8 @@ public class RichiestaController {
 			richiesta.setListaFoto(r.getListaFoto());
 			this.richiestaService.inserisci(richiesta);
 			session.invalidate();
-			return "album.html";
+			model.addAttribute("fotografie",fotoService.tutti());
+			return "index.html";
 		}else {
 			return "richiestaForm.html";
 		}

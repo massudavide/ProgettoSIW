@@ -8,7 +8,7 @@ html, body {
 }
 
 .full-screen-containerAdmin {
-    background-image: url("https://www.york.ac.uk/media/study/courses/postgraduate/computerscience/cyber%20security%20banner.jpg");
+    background-image: url("http://www.datamanager.it/wp-content/uploads/2016/05/security.jpg");
     height: 100vh;
     width: 100vw;
     background-size: cover;
@@ -19,7 +19,7 @@ html, body {
 }
 
 .full-screen-containerFoto{
-    background-image: url("http://www.nationalgeographic.it/images/2016/12/06/164441083-abc66e5b-8d1b-46d7-a0aa-024b9dea5edb.jpg");
+    background-image: url("http://starchop.altervista.org/wp-content/uploads/2015/03/Photo-Taken-HD-Wallpaper.jpg");
     height: 100vh;
     width: 100vw;
     background-size: cover;
