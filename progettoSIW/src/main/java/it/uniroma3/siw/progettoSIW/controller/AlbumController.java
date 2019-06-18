@@ -61,7 +61,8 @@ public class AlbumController {
 	}
 	
 	
-	@RequestMapping({"galleryAlbum/galleryAlbum","/galleryAlbum","gallery/galleryAlbum","galleryFotografi/galleryAlbum"})
+	@RequestMapping({"galleryAlbum/galleryAlbum","/galleryAlbum","gallery/galleryAlbum",
+		"galleryFotografi/galleryAlbum", "addFotoRichiesta/galleryAlbum", "deleteFotoRichiesta/galleryAlbum"})
 	public String galleryAlbum(Model model) {
 		model.addAttribute("albums", albumService.tutti());
 		return "galleryAlbum.html";

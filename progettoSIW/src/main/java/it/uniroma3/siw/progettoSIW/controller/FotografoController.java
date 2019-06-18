@@ -64,7 +64,8 @@ public class FotografoController{
 		return "fotografi.html";
 	}
 
-	@RequestMapping(value= {"gallery/galleryFotografi", "/galleryFotografi", "galleryAlbum/galleryFotografi"})
+	@RequestMapping(value= {"gallery/galleryFotografi", "/galleryFotografi", "galleryAlbum/galleryFotografi",
+			"addFotoRichiesta/galleryFotografi", "deleteFotoRichiesta/galleryFotografi"})
 	public String galleryFotografi(Model model) {
 		model.addAttribute("fotografi",fotografoService.tutti());
 		return "galleryFotografi.html";

@@ -60,7 +60,7 @@ public class FotoController{
 		return "index.html";
 	}
 	
-	@RequestMapping(value = {"/gallery","gallery/gallery","galleryAlbum/gallery","galleryFotografo/gallery","addFotoRichiesta/gallery"})
+	@RequestMapping(value = {"/gallery","gallery/gallery","galleryAlbum/gallery","galleryFotografo/gallery","addFotoRichiesta/gallery", "deleteFotoRichiesta/gallery"})
 	public String gallery(Model model) {
 		model.addAttribute("fotografie", fotoService.tutti());
 		return "gallery.html";
