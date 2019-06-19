@@ -59,10 +59,10 @@ public class AdminController {
 			model.addAttribute("fotografie", fotoService.primi());
 			return "indexAdmin.html";
 		}
-		
+
 	} 
-	
-	
+
+
 
 	@RequestMapping(value = "/admin", method = RequestMethod.POST)
 	public String newAlbum(@Valid @ModelAttribute("admin") Admin admin, 
@@ -92,7 +92,7 @@ public class AdminController {
 		return "adminForm.html";
 	}
 
-	
+
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("admin", new Admin());
@@ -116,21 +116,33 @@ public class AdminController {
 	}
 
 	@RequestMapping("/ricercaFotografi")
-	public String ricercaFotografi(Model model) {
-		model.addAttribute("fotografi", fotografoService.tutti());
-		return "fotografi.html";
+	public String ricercaFotografi(Model model) { 
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("fotografi", fotografoService.tutti());
+			return "fotografi.html";
+		}
 	}
 
 	@RequestMapping("/ricercaAlbum")
 	public String ricercaAlbum(Model model) {
-		model.addAttribute("albums", albumService.tutti());
-		return "albums.html";
-	}  
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("albums", albumService.tutti());
+			return "albums.html";
+		}  
+	}
 
 	@RequestMapping("/ricercaFotografie")
 	public String ricercaFotografie(Model model) {
-		model.addAttribute("fotografie", fotoService.tutti());
-		return "fotografie.html";
+		if (session.getAttribute("admin")==null)
+			return "error403.html";
+		else {
+			model.addAttribute("fotografie", fotoService.tutti());
+			return "fotografie.html";
+		}
 	} 
 
 
@@ -179,7 +191,7 @@ public class AdminController {
 			return "fotografoForm.html";
 		}
 	}
-	
+
 	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -190,8 +202,8 @@ public class AdminController {
 			return "albumForm.html";
 		}
 	}
-	
-	
+
+
 	@RequestMapping("/addFoto")
 	public String addFoto(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -203,9 +215,9 @@ public class AdminController {
 		}
 	}
 
-	
-		
-		
+
+
+
 }
 
 
