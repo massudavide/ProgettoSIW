@@ -4,7 +4,17 @@
 - Marini Franco
 - Massuda Davide
 
-### Testo Homework: 
+
+### Login Funzionario Silph
+Per semplicità abbiamo deciso di registrare un singolo funzionario, con le seguenti credenziali: 
+- email: admin
+- password: admin
+
+
+
+
+
+## Testo Homework: 
 L’agenzia SILPH SPA gestisce album e fotografie per conto di fotografi e fa da mediatore per il loro utilizzo da parte di clienti (ad esempio aziende terze che vogliono usarle per campagne pubblicitarie). 
 
 In dettaglio:
