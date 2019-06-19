@@ -1,17 +1,16 @@
 <!DOCTYPE HTML>
 
-
 <html>
-	<head>
-		<title>HOME</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/CSS/main.css" />
-	</head>
-	<body>
-		<div class="page-wrap">
+<head>
+<title>HOME</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/CSS/main.css" />
+</head>
+<body>
+	<div class="page-wrap">
 
-			<!-- Nav -->
+		<!-- Nav -->
 		<nav id="nav">
 			<ul>
 				<li><a href="/" class="active"><span class="icon fa-home"></span></a></li>
@@ -29,70 +28,97 @@
 		</nav>
 
 		<!-- Main -->
-				<section id="main">
+		<section id="main">
 
-					<!-- Banner -->
-						<section id="banner">
-							<div class="inner">
-								<h1>Hey, Io sono SILPH</h1>
-								<p> e  ho sicuramente la foto che stai cercando.</p>
-								<ul class="actions">
-									<li><a href="#galleries" class="button alt scrolly big">Continua</a></li>
-								</ul>
-							</div>
-						</section>
+			<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h1>Hey, Io sono SILPH</h1>
+					<p>e ho sicuramente la foto che stai cercando.</p>
+					<ul class="actions">
+						<li><a href="#galleries" class="button alt scrolly big">Continua</a></li>
+					</ul>
+				</div>
+			</section>
 
-					<!-- Gallery -->
-						<section id="galleries">
+			<!-- Gallery -->
+			<section id="galleries">
 
-							<!-- Photo Galleries -->
-								<div class="gallery">
-									<header class="special">
-										<h2>Le novità</h2>
-									</header>
-									<div class="content">
-										<div class="media" th:each="fotografia : ${fotografie}">
-											 <a th:href="@{'/selezionaFoto' + '/' + ${fotografia.id}}"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt=""  /></a>
-										</div>
-										
-									</div>
-									<footer>
-										<a href="gallery" class="button big">Visita la galleria</a>
-									</footer>
-								</div>
-						</section>
+				<!-- Photo Galleries -->
+				<div class="gallery">
+					<header class="special">
+						<h2>Le novità</h2>
+					</header>
+					<div class="content">
+						<div class="media" th:each="fotografia : ${fotografie}">
+							<a th:href="@{'/selezionaFoto' + '/' + ${fotografia.id}}"><img
+								style="width: 400px; height: 300px" th:src="${fotografia.url}"
+								alt="" /></a>
+						</div>
 
-					<!-- Contact -->
-						<section id="contact">
-							<!-- Social -->
-								<div class="social column">
-									<h3>About Me</h3>
-									<p>Mus sed interdum nunc dictum rutrum scelerisque erat a parturient condimentum potenti dapibus vestibulum condimentum per tristique porta. Torquent a ut consectetur a vel ullamcorper a commodo a mattis ipsum class quam sed eros vestibulum quisque a eu nulla scelerisque a elementum vestibulum.</p>
-									<p>Aliquet dolor ultricies sem rhoncus dolor ullamcorper pharetra dis condimentum ullamcorper rutrum vehicula id nisi vel aptent orci litora hendrerit penatibus erat ad sit. In a semper velit eleifend a viverra adipiscing a phasellus urna praesent parturient integer ultrices montes parturient suscipit posuere quis aenean. Parturient euismod ultricies commodo arcu elementum suspendisse id dictumst at ut vestibulum conubia quisque a himenaeos dictum proin dis purus integer mollis parturient eros scelerisque dis libero parturient magnis.</p>
-									
-									<h3>Follow Me</h3>
-									
-								</div>
+					</div>
+					<footer>
+						<a href="gallery" class="button big">Visita la galleria</a>
+					</footer>
+				</div>
+			</section>
+
+			<!-- Contact -->
+			<section id="contact">
+				<!-- Social -->
+				<div class="social column">
+					<h3>Chi siamo</h3>
+					<p>
+						Sei un'azienda in cerca della foto perfetta per la tua campagna
+						pubblicitaria? <br /> Sei un cantante e stai cercando la
+						copertina per il tuo nuovo disco? <br /> Allora sei nel posto
+						giusto! <br /> Noi offriamo la possibilità di trovare la foto
+						giusta per ogni evenienza, in maniera semplice e veloce. <br />
+						Quello che ti basterà fare sarà:
+					<ul>
+						<li>Cliccare sulla foto.</li>
+						<li>Cliccare su <i class="fa fa-shopping-cart"
+							aria-hidden="true"></i>
+						</li>
+					</ul>
+					La foto verrà aggiunta al tuo carrello, e potrai inviarci la tua
+					richiesta semplicemente cliccando su <b>‘INOLTRA’</b>. <br /> Un
+					nostro funzionario ti risponderà appena possibile, inviandoti il
+					contratto di utilizzo per tale richiesta. <br> Facile no? Cosa
+					aspetti?
+					</p>
+
+					<h3>Seguici</h3>
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span
+								class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span
+								class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span
+								class="label">Instagram</span></a></li>
+					</ul>
+
+				</div>
 
 
-						</section>
+			</section>
 
-					<!-- Footer -->
-						<footer id="footer">
-							<div class="copyright">
-								&copy; Untitled Design: <a href="#">Marini</a> e <a href="#">Massuda</a>.
-							</div>
-						</footer>
-				</section>
-		</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="copyright">
+					&copy; Untitled Design: <a href="#">Marini</a> e <a href="#">Massuda</a>.
+				</div>
+			</footer>
+		</section>
+	</div>
 
-		<!-- Scripts -->
-			<script src="/js/jquery.min.js"></script>
-			<script src="/js/jquery.poptrox.min.js"></script>
-			<script src="/js/jquery.scrolly.min.js"></script>
-			<script src="/js/skel.min.js"></script>
-			<script src="/js/util.js"></script>
-			<script src="/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.poptrox.min.js"></script>
+	<script src="/js/jquery.scrolly.min.js"></script>
+	<script src="/js/skel.min.js"></script>
+	<script src="/js/util.js"></script>
+	<script src="/js/main.js"></script>
 
-	</body>
+</body>
 </html>
