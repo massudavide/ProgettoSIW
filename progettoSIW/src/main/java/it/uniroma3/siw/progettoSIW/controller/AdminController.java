@@ -93,12 +93,15 @@ public class AdminController {
 	}
 
 
+	
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("admin", new Admin());
 		return "adminForm.html";
 	}
 
+	
 
 	@RequestMapping("/utente")
 	public String utente(Model model) {
@@ -107,6 +110,7 @@ public class AdminController {
 		return "index.html";
 	}
 
+	
 	@RequestMapping("/ricerca")
 	public String ricerca() {
 		if (session.getAttribute("admin")==null)
@@ -115,6 +119,7 @@ public class AdminController {
 			return "ricerca.html";
 	}
 
+	
 	@RequestMapping("/ricercaFotografi")
 	public String ricercaFotografi(Model model) { 
 		if (session.getAttribute("admin")==null)
@@ -125,6 +130,7 @@ public class AdminController {
 		}
 	}
 
+	
 	@RequestMapping("/ricercaAlbum")
 	public String ricercaAlbum(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -135,6 +141,7 @@ public class AdminController {
 		}  
 	}
 
+	
 	@RequestMapping("/ricercaFotografie")
 	public String ricercaFotografie(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -159,6 +166,7 @@ public class AdminController {
 		return "fotografie.html";
 	}
 
+	
 	//Id del fotografo
 	@RequestMapping(value=  "/ricercaAlbum/{id}", method = RequestMethod.GET)
 	public String ricercaAlbums(@PathVariable ("id") Long id, Model model) {
@@ -172,6 +180,7 @@ public class AdminController {
 		return "albums.html";
 	}
 
+	
 	@RequestMapping("/mostraRichieste")
 	public String mostraRichieste(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -182,6 +191,7 @@ public class AdminController {
 		}
 	}
 
+	
 	@RequestMapping("/addFotografo")
 	public String addFotografo(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -192,6 +202,7 @@ public class AdminController {
 		}
 	}
 
+	
 	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		if (session.getAttribute("admin")==null)
@@ -214,7 +225,6 @@ public class AdminController {
 			return "fotoForm.html";
 		}
 	}
-
 
 
 

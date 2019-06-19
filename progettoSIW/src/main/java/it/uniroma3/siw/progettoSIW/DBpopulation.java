@@ -19,20 +19,20 @@ import it.uniroma3.siw.progettoSIW.repository.*;
 
 @Component
 public class DBpopulation implements ApplicationRunner{
-	
+
 	@Autowired
 	private FotoRepository fotoRepository;
 
 	@Autowired
 	private AlbumRepository albumRepository;
-	
+
 
 	@Autowired
 	private FotografoRepository fotografoRepository;
-	
+
 	@Autowired
 	private AdminRepository adminRepository;
-	
+
 	@Autowired
 	private RichiestaRepository richiestaRepository;
 
@@ -41,7 +41,7 @@ public class DBpopulation implements ApplicationRunner{
 		this.addAll();
 	}
 
-	
+
 	private void addAll() {
 		System.out.print("Aggiungo fotografi, album e fotografie");
 
@@ -69,7 +69,7 @@ public class DBpopulation implements ApplicationRunner{
 		this.fotografoRepository.save(fg2);
 		Fotografo fg3= new Fotografo("Davide", "Massuda");
 		this.fotografoRepository.save(fg3);
-		
+
 		Album a1 = new Album("Sport", fg2);
 		Album a2 = new Album("Paesaggi",fg2);
 		Album a3 = new Album("Matrimoni",fg3);
@@ -77,7 +77,7 @@ public class DBpopulation implements ApplicationRunner{
 		Album a5 = new Album("Moda",fg1);
 		Album a6 = new Album("Spazio",fg3);
 		Album a7 = new Album("Musica",fg1);
-		
+
 		fg2.getAlbum().add(a1);
 		fg2.getAlbum().add(a2);
 		fg3.getAlbum().add(a3);
@@ -86,7 +86,7 @@ public class DBpopulation implements ApplicationRunner{
 		fg3.getAlbum().add(a6);
 		fg1.getAlbum().add(a7);
 
-		
+
 		Foto f1 = new Foto("Il leone", a4 , u1);
 		Foto f2 = new Foto("La corsa", a1 , u2);
 		Foto f3 = new Foto("Allenamento", a1 , u3);
@@ -103,7 +103,7 @@ public class DBpopulation implements ApplicationRunner{
 		Foto f14 = new Foto("Jordan", a1 , u14);
 		Foto f15 = new Foto("La grande sfida", a1 , u15);
 		Foto f16 = new Foto("Aurora boreale", a2 , u16);
-		
+
 		a1.getFoto().add(f2);
 		a1.getFoto().add(f3);
 		a2.getFoto().add(f10);
@@ -120,9 +120,9 @@ public class DBpopulation implements ApplicationRunner{
 		a1.getFoto().add(f14);
 		a1.getFoto().add(f15);
 		a2.getFoto().add(f16);
-		
-	
-		
+
+
+
 
 		this.albumRepository.save(a1);
 		this.albumRepository.save(a2);
@@ -151,35 +151,32 @@ public class DBpopulation implements ApplicationRunner{
 		this.fotoRepository.save(f4);
 		this.fotoRepository.save(f5);
 		this.fotoRepository.save(f6);
-		
-		
-		
+
+
+
 		Admin admin= new Admin("admin", "admin");
 		this.adminRepository.save(admin);
-	
-		
+
+
 		Richiesta r1= new Richiesta();
 		List<Foto> lista1= new ArrayList<Foto>();
 		lista1.add(f4);
 		lista1.add(f2);
 		r1.setListaFoto(lista1);
 		r1.setEmail("marselo12@hotmail.it");
-		
+
 		Richiesta r2= new Richiesta();
 		List<Foto> lista2= new ArrayList<Foto>();
 		lista2.add(f9);
 		r2.setListaFoto(lista2);
 		r2.setEmail("fabio92@gmail.com");
-		
+
 		richiestaRepository.save(r1);
 		richiestaRepository.save(r2);
-		
-		
 
 
-		
+
 	}
 
-	
-	
+
 }
