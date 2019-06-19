@@ -17,24 +17,24 @@ import it.uniroma3.siw.progettoSIW.services.*;
 
 @Controller
 public class AlbumController {
-	
+
 	@Autowired
 	private AlbumService albumService;
 
 	@Autowired
 	private AlbumValidator albumValidator;
-	
+
 	@Autowired
 	private FotografoService fotografoService;
-	
+
 	@Autowired
 	private FotoService fotoService;
 
-	
+
 	@RequestMapping(value = "/album", method = RequestMethod.POST)
 	public String newAlbum(@Valid @ModelAttribute("albumForm") AlbumForm albumForm, //Da controllare
 			Model model, BindingResult bindingResult) {
-		
+
 		this.albumValidator.validate(albumForm, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			Album album=new Album();
@@ -48,15 +48,15 @@ public class AlbumController {
 			return "albumForm.html";
 		}
 	}
-	
-	
+
+
 	@RequestMapping({"galleryAlbum/galleryAlbum","/galleryAlbum","gallery/galleryAlbum",
 		"galleryFotografi/galleryAlbum", "addFotoRichiesta/galleryAlbum", "deleteFotoRichiesta/galleryAlbum"})
 	public String galleryAlbum(Model model) {
 		model.addAttribute("albums", albumService.tutti());
 		return "galleryAlbum.html";
 	}
-	
+
 	@RequestMapping(value={"/galleryAlbum/{id}","galleryAlbum/galleryAlbum/{id}", "galleryFotografy/galleryAlbum/{id}","gallery/galleryAlbum/{id}"},
 			method = RequestMethod.GET)
 	public String galleryAlbumFotografi(@PathVariable ("id") Long id, Model model) {
@@ -66,12 +66,12 @@ public class AlbumController {
 		}else {
 			model.addAttribute("albums", this.albumService.tutti());
 		}
-		
+
 		return "galleryAlbum.html";
 	}
-	
-	
-	
+
+
+
 
 
 

@@ -24,7 +24,7 @@ public class FotografoController{
 
 	@Autowired
 	private FotografoService fotografoService;
-	
+
 	@Autowired
 	private FotoService fotoService;
 
@@ -70,8 +70,6 @@ public class FotografoController{
 		model.addAttribute("fotografi",fotografoService.tutti());
 		return "galleryFotografi.html";
 	}
-
-
 
 
 

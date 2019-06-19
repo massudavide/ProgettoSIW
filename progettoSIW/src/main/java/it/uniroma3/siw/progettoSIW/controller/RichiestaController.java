@@ -38,7 +38,7 @@ public class RichiestaController {
 
 
 
-	@RequestMapping(value= {"/mostraCarrello", "gallery/mostraCarrello", "galleryAlbum/mostraCarrello","addFotoRichiesta/mostraCarrello"}, method = RequestMethod.GET)
+	@RequestMapping(value= {"/mostraCarrello", "gallery/mostraCarrello", "galleryAlbum/mostraCarrello","addFotoRichiesta/mostraCarrello", "deleteFotoRichiesta/mostraCarrello"}, method = RequestMethod.GET)
 	public String mostraCarrello(Model model) {
 		Richiesta richiesta= (Richiesta) session.getAttribute("richiesta");
 		if (richiesta==null || richiesta.getListaFoto().size()==0)
@@ -101,7 +101,7 @@ public class RichiestaController {
 			if (richiesta.getListaFoto().size()==0)
 				return "carrelloVuoto.html";
 			else
-			return "carrello.html";
+				return "carrello.html";
 		}
 	}
 

@@ -1,85 +1,109 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-	
-	<head>
+
+<head>
 <style>
-
-* {margin:0;padding:0; border: 0 none; position: relative;}
-*, *:before, *:after {box-sizing: inherit;}
-html{
-  box-sizing: border-box;
-  background: #fff;
-  font-size: 1rem;
+* {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	position: relative;
 }
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	background: #fff;
+	font-size: 1rem;
+}
+
 table {
-  table-layout: fixed;
-  margin: 1rem auto;
-  width: 90%;
-  box-shadow: 0 0 2px rgba(0,0,0,.4);
-  border-collapse: collapse;
+	table-layout: fixed;
+	margin: 1rem auto;
+	width: 90%;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+	border-collapse: collapse;
 }
+
 thead {
-  
+	
 }
+
 th {
-  background: #1195b2;
-  color: #fff;
-  font-weight: 400;
-  padding: .7rem 0;
-  border: 3px solid #fff;
-  font-size: 1.5rem;
-  font-variant: small-caps;
-  width: 22%;
+	background: #1195b2;
+	color: #fff;
+	font-weight: 400;
+	padding: .7rem 0;
+	border: 3px solid #fff;
+	font-size: 1.5rem;
+	font-variant: small-caps;
+	width: 22%;
 }
-th:last-child {width: 8%;}
+
+th:last-child {
+	width: 8%;
+}
+
 tr:nth-child(even) {
-  background: rgba(17,149,178,.2);
+	background: rgba(17, 149, 178, .2);
 }
+
 td {
-  padding: .5rem 1rem;
-  border-right: 1px solid rgba(0,0,0,.05);
+	padding: .5rem 1rem;
+	border-right: 1px solid rgba(0, 0, 0, .05);
 }
+
 td:last-child {
-  border-right: 0 none;
-  text-align: center;
+	border-right: 0 none;
+	text-align: center;
 }
+
 @media only screen and (max-width:600px) {
-  table{
-    width: 98%;
-  }
-  thead {display: none;}
-  tr {border-bottom: 2px solid rgba(17,149,178,.35);}
-  tr:last-child {border-bottom: 0 none;}
-  td {
-    display: block;
-    padding: .3rem .5rem;
-  }
-  td:before {
-    content: attr(data-head);
-    display: inline-block;
-    width: auto;;
-    min-width: 40%;
-    font-weight: 900;
-    padding-right: 1rem;
-    font-variant: small-caps;
-  }
-  td:last-child {text-align: left;}
-  td:nth-child(odd) {
-    background: rgba(17,149,178,.15);
-  }
+	table {
+		width: 98%;
+	}
+	thead {
+		display: none;
+	}
+	tr {
+		border-bottom: 2px solid rgba(17, 149, 178, .35);
+	}
+	tr:last-child {
+		border-bottom: 0 none;
+	}
+	td {
+		display: block;
+		padding: .3rem .5rem;
+	}
+	td:before {
+		content: attr(data-head);
+		display: inline-block;
+		width: auto;;
+		min-width: 40%;
+		font-weight: 900;
+		padding-right: 1rem;
+		font-variant: small-caps;
+	}
+	td:last-child {
+		text-align: left;
+	}
+	td:nth-child(odd) {
+		background: rgba(17, 149, 178, .15);
+	}
 }
-
-
 </style>
 </head>
-	
+
 <body>
 	<div>
-	<br/>
+		<br />
 		<h1>Carrello</h1>
-		
-		
+
+
 		<table>
 			<thead>
 				<tr>
@@ -94,20 +118,21 @@ td:last-child {
 				<tr th:each="fotografia : ${fotografie}">
 					<td th:text="${fotografia.id}">1</td>
 					<td th:text="${fotografia.titolo}">titolo foto</td>
-					<td><a th:href="@{'/deleteFotoRichiesta' + '/' + ${fotografia.id}}"><button>Rimuovi</button></a></td>
+					<td><a
+						th:href="@{'/deleteFotoRichiesta' + '/' + ${fotografia.id}}"><button>Rimuovi</button></a></td>
 					<td><a th:href="${fotografia.url}"><button>Visualizza</button></a></td>
 				</tr>
 
 			</tbody>
 		</table>
-		
-		
-		<br/>
-		
-		<a href="svuotaCarrello"><button style="position:absolute;left:1160px;width:100px;height:28px;background-color:tomato">Svuota</button></a>
-		<a href="gallery"><button style="position:absolute;left:1000px;width:140px;height:28px;background-color:SkyBlue ">Seleziona altre foto</button></a>
-	<br/> <br/> <br/> <br/>
-	<a href="inoltraRichiesta"><button style="position:absolute;left:1320px;width:120px;height:35px;background-color:green;font-size:25px;color:white">Inoltra</button></a>
+
+
+		<br /> <a href="svuotaCarrello"><button
+				style="position: absolute; left: 1160px; width: 100px; height: 28px; background-color: tomato">Svuota</button></a>
+		<a href="gallery"><button
+				style="position: absolute; left: 1000px; width: 140px; height: 28px; background-color: SkyBlue">Seleziona
+				altre foto</button></a> <br /> <br /> <br /> <br /> <a href="inoltraRichiesta"><button
+				style="position: absolute; left: 1320px; width: 120px; height: 35px; background-color: green; font-size: 25px; color: white">Inoltra</button></a>
 	</div>
 </body>
 </html>

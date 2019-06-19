@@ -23,20 +23,20 @@ import it.uniroma3.siw.progettoSIW.services.FotoValidator;
 
 @Controller
 public class FotoController{
-	
+
 	@Autowired
 	private FotoService fotoService;
 
 	@Autowired
 	private FotoValidator fotoValidator;
-	
+
 	@Autowired
 	private AlbumService albumService;
-	
+
 	@RequestMapping(value = "/foto", method = RequestMethod.POST)
 	public String newFoto(@Valid @ModelAttribute("fotoForm") FotoForm fotoForm,
 			Model model, BindingResult bindingResult) {
-		
+
 		this.fotoValidator.validate(fotoForm, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			Foto foto= new Foto();
@@ -44,7 +44,7 @@ public class FotoController{
 			foto.setUrl(fotoForm.getUrl());
 			foto.setDataCreazione(LocalDateTime.now());
 			foto.setAlbum(albumService.albumPerId(Long.parseLong(fotoForm.getAlbumId())));
-			
+
 			this.fotoService.inserisci(foto);
 			model.addAttribute("fotografie", this.fotoService.primi());
 			return "indexAdmin.html";
@@ -53,22 +53,22 @@ public class FotoController{
 			return "fotoForm.html";
 		}
 	}
-		
-	
+
+
 	@RequestMapping("/")
 	public String inzio(Model model) {
 		model.addAttribute("fotografie", fotoService.primi());
 		return "index.html";
 	}
-	
+
 	@RequestMapping(value = {"/gallery","gallery/gallery","galleryAlbum/gallery","galleryFotografo/gallery","addFotoRichiesta/gallery", "deleteFotoRichiesta/gallery"})
 	public String gallery(Model model) {
 		model.addAttribute("fotografie", fotoService.tutti());
 		return "gallery.html";
-		
+
 	}
-	
-	
+
+
 	@RequestMapping(value={"/gallery/{id}","gallery/gallery/{id}", "galleryFotografy/gallery/{id}","galleryAlbum/gallery/{id}"},
 			method = RequestMethod.GET)
 	public String galleryFotoAlbum(@PathVariable ("id") Long id, Model model) {
@@ -78,7 +78,7 @@ public class FotoController{
 		}else {
 			model.addAttribute("fotografie", this.albumService.tutti());
 		}
-		
+
 		return "gallery.html";
 	}
 
