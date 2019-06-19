@@ -38,7 +38,7 @@ public class FotografoController{
 		this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			this.fotografoService.inserisci(fotografo);
-			model.addAttribute("fotografie", this.fotoService.tutti());
+			model.addAttribute("fotografie", this.fotoService.primi());
 			return "indexAdmin.html";
 		}else {
 			return "fotografoForm.html";

@@ -152,7 +152,7 @@ public class RichiestaController {
 			richiesta.setListaFoto(r.getListaFoto());
 			this.richiestaService.inserisci(richiesta);
 			session.invalidate();
-			model.addAttribute("fotografie",fotoService.tutti());
+			model.addAttribute("fotografie",fotoService.primi());
 			return "index.html";
 		}else {
 			return "richiestaForm.html";

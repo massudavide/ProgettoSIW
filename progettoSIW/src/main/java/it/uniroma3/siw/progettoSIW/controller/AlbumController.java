@@ -41,22 +41,11 @@ public class AlbumController {
 			album.setTitolo(albumForm.getTitolo());
 			album.setFotografo(fotografoService.fotografoPerId(Long.parseLong(albumForm.getFotografoId())));
 			this.albumService.inserisci(album);
-			model.addAttribute("fotografie", this.fotoService.tutti());
+			model.addAttribute("fotografie", this.fotoService.primi());
 			return "indexAdmin.html"; 
 		}else {
 			model.addAttribute("fotografi", this.fotografoService.tutti());
 			return "albumForm.html";
-		}
-	}
-	
-	@RequestMapping(value = "/album/{id}", method = RequestMethod.GET)
-	public String getAlbum(@PathVariable ("id") Long id, Model model) {
-		if(id!=null) {
-			model.addAttribute("album", this.albumService.albumPerId(id));
-			return "album.html";
-		}else {
-			model.addAttribute("album", this.albumService.tutti());
-			return "tuttiGliAlbum.html";
 		}
 	}
 	

@@ -56,7 +56,7 @@ public class AdminController {
 		if (session.getAttribute("admin")==null)
 			return "error403.html";
 		else {
-			model.addAttribute("fotografie", fotoService.tutti());
+			model.addAttribute("fotografie", fotoService.primi());
 			return "indexAdmin.html";
 		}
 		
@@ -77,7 +77,7 @@ public class AdminController {
 			}				
 
 			if (session.getAttribute("admin")!=null) {
-				model.addAttribute("fotografie", fotoService.tutti());
+				model.addAttribute("fotografie", fotoService.primi());
 				return "indexAdmin.html";
 			}
 
@@ -103,7 +103,7 @@ public class AdminController {
 	@RequestMapping("/utente")
 	public String utente(Model model) {
 		session.invalidate();
-		model.addAttribute("fotografie", fotoService.tutti());
+		model.addAttribute("fotografie", fotoService.primi());
 		return "index.html";
 	}
 

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.progettoSIW.controller;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import javax.validation.Valid;
 
@@ -45,7 +46,7 @@ public class FotoController{
 			foto.setAlbum(albumService.albumPerId(Long.parseLong(fotoForm.getAlbumId())));
 			
 			this.fotoService.inserisci(foto);
-			model.addAttribute("fotografie", this.fotoService.tutti());
+			model.addAttribute("fotografie", this.fotoService.primi());
 			return "indexAdmin.html";
 		}else {
 			model.addAttribute("albums", this.albumService.tutti());
@@ -56,7 +57,7 @@ public class FotoController{
 	
 	@RequestMapping("/")
 	public String inzio(Model model) {
-		model.addAttribute("fotografie", fotoService.tutti());
+		model.addAttribute("fotografie", fotoService.primi());
 		return "index.html";
 	}
 	
@@ -64,6 +65,7 @@ public class FotoController{
 	public String gallery(Model model) {
 		model.addAttribute("fotografie", fotoService.tutti());
 		return "gallery.html";
+		
 	}
 	
 	

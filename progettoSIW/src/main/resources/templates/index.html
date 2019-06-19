@@ -51,16 +51,16 @@
 							<!-- Photo Galleries -->
 								<div class="gallery">
 									<header class="special">
-										<h2>Dai un rapido sguardo alla Gallery</h2>
+										<h2>Le novità</h2>
 									</header>
 									<div class="content">
 										<div class="media" th:each="fotografia : ${fotografie}">
-											<a th:href="${fotografia.url}"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt=""  /></a>
+											 <a th:href="@{'/selezionaFoto' + '/' + ${fotografia.id}}"><img style="width:400px;height:300px" th:src="${fotografia.url}" alt=""  /></a>
 										</div>
 										
 									</div>
 									<footer>
-										<a href="gallery" class="button big">Richiedi Foto</a>
+										<a href="gallery" class="button big">Visita la galleria</a>
 									</footer>
 								</div>
 						</section>
