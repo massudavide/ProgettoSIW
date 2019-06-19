@@ -1,0 +1,109 @@
+ELENCO DEI CASI D'USO
+
+
+Caso d'uso UC1: Visualizzazione gallery
+Attore primario: utente
+
+1. L'utente può visualizzare tutte le foto che sono registrate nel sistema, semplicemente selezionando il pulsante con l’icona “fotocamera”.
+2. Il sistema visualizzerà tutte le foto
+
+
+Caso d'uso UC2: Visualizzazione fotografi/album
+Attore primario: utente
+
+1. L'utente può visualizzare tutti gli album e i fotografi che sono registrati nel sistema, semplicemente selezionando il pulsante con l’icona “fotocamera”, e poi cliccando sul bottone in alto “FOTOGRAFI” o “ALBUM”
+2. Il sistema visualizzerà la richiesta
+
+
+
+Caso d'uso UC3: invio richiesta di utilizzo
+Attore primario: utente
+
+1. L'utente seleziona una serie di foto 
+2. Il sistema inserisce le foto selezionate nel carrello
+3. Terminato di selezionare le foto, l'utente cliccherà sul bottone "Carrello", e poi selezionerà “INOLTRA”
+4. Si aprirà una form, in cui l’utente dovrà inserire la propria email
+5. Conclusa la compilazione della form, clicca su CONFERMA
+6. Il sistema rimanderà alla home page 
+
+
+Caso d'uso UC4: svuota carrello
+Attore primario: utente
+
+L’utente visualizza le foto richieste, cliccando sul bottone “Carrello”
+Cliccando su “SVUOTA”, verranno eliminate tutte le sue richieste
+Il sistema visualizzerà il carrello vuoto
+
+
+Caso d'uso UC5: aggiungi una FOTO al Carrello
+Attore primario: utente
+
+1. L'utente clicca su una foto
+2. Il sistema mostrerà la foto in dimensioni ridotte
+3. L’utente passando con la freccia sopra la foto, potrà osservare tutte le informazioni sulla foto e potrà decidere se vedere la foto originale ( tramite il bottone “lente d’ingrandimento” ) oppure se aggiungerla al suo carrello ( tramite il bottone “Carrello” )
+6. Una volta aggiunta la foto al carrello, il sistema rimanderà alla gallery 
+
+Caso d'uso UC6: Login dell'amministratore 
+Attore primario: amministratore
+
+1. L’ amministratore clicca sul bottone "LOGIN"
+2. L'amministratore inserisce i propri dati nella form (username,password)
+3. Il sistema verifica i dati inseriti e autentica l’utente
+
+Estensione del passo 3
+- Se i dati inseriti sono errati l'utente viene reindirizzato alla pagina di inserimento dei dati.
+- Un utente generico può liberamente visualizzare la galleria senza effettuare il login.
+
+
+
+
+
+
+Caso d'uso UC7: L’amministratore inserisce un nuovo Fotografo nel sistema
+Attore primario: amministratore
+Precondizione: l'amministratore ha eseguito correttamente il login
+
+1. L'amministratore sceglie l'operazione Inserisci Fotografo, cliccando sul bottone con lo “user”
+2. L’amministratore inserisce i dati del nuovo Fotografo nella form e li invia al sistema
+3. Il sistema verifica che i dati inseriti siano validi ed inserisce il fotografo nel db
+
+
+Caso d'uso UC8: L’amministratore inserisce un nuovo Album nel sistema
+Attore primario: amministratore
+Precondizione: l'amministratore ha eseguito correttamente il login
+
+1. L'amministratore sceglie l’operazione Inserisci Album, cliccando sul bottone con il “libro”
+2. L’amministratore inserisci i dati relativi al nuovo Album e sceglie l'autore della foto tra i fotografi già presenti nel sistema tramite un menù a tendina
+3. Il sistema verifica che dati immessi siano validi ed inserisce l’album nel db
+
+
+
+Caso d'uso UC9: 
+L’admin inserisce una nuovo Foto nel sistema
+Attore primario: amministratore
+Precondizione: l'amministratore ha eseguito correttamente il login
+
+1. L' amministratore sceglie l’operazione Gestisci Foto, cliccando sul bottone con la “foto”
+2. L’amministratore inserisci i dati relativi alla nuova Foto e sceglie l'album della foto tra gli album già presenti nel sistema tramite un menù a tendina
+3. Il sistema verifica che dati immessi siano validi ed inserisce la foto nel db
+
+
+Caso d'uso UC10: Visualizzazione di tutte le richieste inviate dagli utenti 
+Attore primario: amministratore
+Precondizione: l'amministratore ha eseguito correttamente il login
+ L'amministratore vuole visualizzare le richieste di utilizzo che sono state inviate dagli utenti 
+ L'amministratore visualizza le richieste cliccando il tasto con la "campanella" 
+ Il sistema visualizzerà le richieste
+
+Per ciascuna richiesta, è possibile visualizzare le FOTO RICHIESTE
+
+
+Caso d'uso UC11: Visualizzazione di tutte le foto, gli album, i fotografi inseriti nel sistema 
+Attore primario: amministratore
+Precondizione: l'amministratore ha eseguito correttamente il login
+ L'amministratore vuole visualizzare tutte le foto, o tuti gli album o tutti i fotografi nel sistema 
+ L'amministratore clicca sul tasto “lente d’ ingrandimento” 
+ L'amministratore sceglie quello che desidera vedere
+ Il sistema visualizzerà la lista richiesta
+
+

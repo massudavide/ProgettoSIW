@@ -1,5 +1,8 @@
 package it.uniroma3.siw.progettoSIW;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -9,6 +12,7 @@ import it.uniroma3.siw.progettoSIW.model.Admin;
 import it.uniroma3.siw.progettoSIW.model.Album;
 import it.uniroma3.siw.progettoSIW.model.Foto;
 import it.uniroma3.siw.progettoSIW.model.Fotografo;
+import it.uniroma3.siw.progettoSIW.model.Richiesta;
 import it.uniroma3.siw.progettoSIW.repository.*;
 
 
@@ -28,6 +32,9 @@ public class DBpopulation implements ApplicationRunner{
 	
 	@Autowired
 	private AdminRepository adminRepository;
+	
+	@Autowired
+	private RichiestaRepository richiestaRepository;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -48,6 +55,12 @@ public class DBpopulation implements ApplicationRunner{
 		String u8 = "http://famiglia-fleming.it/wp-content/uploads/2017/11/pexels-photo-236047.jpeg";
 		String u9 = "https://wallpapercave.com/wp/wTEV3Wl.jpg";
 		String u10 = "http://www.accomodations.asia/bigimg/56/569024_wallpaper-paesaggi.jpg";
+		String u11 = "https://www.spettakolo.it/wp-content/uploads/2016/08/3eaecbb9475146f691e18c9b533e950f.jpg";
+		String u12 = "https://cdn.allwallpaper.in/wallpapers/1920x1440/8754/music-concert-1920x1440-wallpaper.jpg";
+		String u13 = "https://wallpapercave.com/wp/wp2157814.jpg";
+		String u14 = "http://img.fliptab.io/michael_jordan/1920x1200/michael_jordan-21.jpg";
+		String u15 = "https://images.alphacoders.com/611/thumb-1920-611772.jpg";
+		String u16 = "https://static.ohga.it/wp-content/uploads/sites/24/2018/12/aurora-boreale.jpg";
 
 
 		Fotografo fg1= new Fotografo("Marco", "Verdi");
@@ -63,6 +76,7 @@ public class DBpopulation implements ApplicationRunner{
 		Album a4 = new Album("Animali",fg3);
 		Album a5 = new Album("Moda",fg1);
 		Album a6 = new Album("Spazio",fg3);
+		Album a7 = new Album("Musica",fg1);
 		
 		fg2.getAlbum().add(a1);
 		fg2.getAlbum().add(a2);
@@ -70,7 +84,7 @@ public class DBpopulation implements ApplicationRunner{
 		fg3.getAlbum().add(a4);
 		fg1.getAlbum().add(a5);
 		fg3.getAlbum().add(a6);
-		
+		fg1.getAlbum().add(a7);
 
 		
 		Foto f1 = new Foto("Il leone", a4 , u1);
@@ -83,6 +97,12 @@ public class DBpopulation implements ApplicationRunner{
 		Foto f8 = new Foto("Il campo toscano", a2 , u8);
 		Foto f9 = new Foto("L'orso selvaggio", a4  , u9);
 		Foto f10 = new Foto("Zona rocciosa", a2 , u10);
+		Foto f11 = new Foto("GunsnRoses", a7 , u11);
+		Foto f12 = new Foto("Il concerto", a7 , u12);
+		Foto f13 = new Foto("Linkin Park", a7 , u13);
+		Foto f14 = new Foto("Jordan", a1 , u14);
+		Foto f15 = new Foto("La grande sfida", a1 , u15);
+		Foto f16 = new Foto("Aurora boreale", a2 , u16);
 		
 		a1.getFoto().add(f2);
 		a1.getFoto().add(f3);
@@ -94,6 +114,12 @@ public class DBpopulation implements ApplicationRunner{
 		a5.getFoto().add(f7);
 		a6.getFoto().add(f5);
 		a6.getFoto().add(f6);
+		a7.getFoto().add(f11);
+		a7.getFoto().add(f12);
+		a7.getFoto().add(f13);
+		a1.getFoto().add(f14);
+		a1.getFoto().add(f15);
+		a2.getFoto().add(f16);
 		
 	
 		
@@ -104,25 +130,51 @@ public class DBpopulation implements ApplicationRunner{
 		this.albumRepository.save(a4);
 		this.albumRepository.save(a5);
 		this.albumRepository.save(a6);
+		this.albumRepository.save(a7);
 
 
 
 
+		this.fotoRepository.save(f7);
+		this.fotoRepository.save(f12);
+		this.fotoRepository.save(f16);
+		this.fotoRepository.save(f14);
+		this.fotoRepository.save(f15);
+		this.fotoRepository.save(f13);
+		this.fotoRepository.save(f11);
+		this.fotoRepository.save(f8);
+		this.fotoRepository.save(f9);
+		this.fotoRepository.save(f10);
 		this.fotoRepository.save(f1);
 		this.fotoRepository.save(f2);
 		this.fotoRepository.save(f3);
 		this.fotoRepository.save(f4);
 		this.fotoRepository.save(f5);
 		this.fotoRepository.save(f6);
-		this.fotoRepository.save(f7);
-		this.fotoRepository.save(f8);
-		this.fotoRepository.save(f9);
-		this.fotoRepository.save(f10);
+		
 		
 		
 		Admin admin= new Admin("admin", "admin");
 		this.adminRepository.save(admin);
 	
+		
+		Richiesta r1= new Richiesta();
+		List<Foto> lista1= new ArrayList<Foto>();
+		lista1.add(f4);
+		lista1.add(f2);
+		r1.setListaFoto(lista1);
+		r1.setEmail("marselo12@hotmail.it");
+		
+		Richiesta r2= new Richiesta();
+		List<Foto> lista2= new ArrayList<Foto>();
+		lista2.add(f9);
+		r2.setListaFoto(lista2);
+		r2.setEmail("fabio92@gmail.com");
+		
+		richiestaRepository.save(r1);
+		richiestaRepository.save(r2);
+		
+		
 
 
 		
